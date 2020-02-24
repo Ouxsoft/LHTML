@@ -1,5 +1,7 @@
 # LHTML5
 
+[![Documentation Status](https://readthedocs.org/projects/lhtml5/badge/?version=latest)](https://lhtml5.readthedocs.io/en/latest/?badge=latest)
+
 Febuary 2020 Edition
 
 ## Introduction
@@ -38,13 +40,22 @@ A conforming implementation of LHTML5 must fulfill all normative requirements. C
 The keywords "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY ", and "OPTIONAL" will be used as defined in RFC 2119 [RFC2119](https://www.w3.org/TR/2004/WD-qaframe-spec-20040830/#RFC2119). When used with the normative RFC2119 meanings, they will be all uppercase. Occurrences of these words in lowercase comprise normal prose usage, with no normative implications.
 
 ## Language
-The LHTML5, in may ways, is a simple extension of HTML5 standard. LHTML5 can on the surface look like an oversimplified and somewhat embellished HTML5 document. 
+
+### HTML5 Spec Inheritance
+LHTML5 inheritance it's standards from the HTML5. 
+https://html.spec.whatwg.org/multipage/
+
+### Modifications
+
+LHTML5 can on the surface look like an oversimplified and somewhat embellished HTML5 document. 
 
 The over simplicity stems from 
 
 LHTML5 modules being able to alter the document and automate redundant elements. 
 
 The embellished looks come from custom elements that are used to instantiate modules. 
+
+
 
 ### Example Document
 An unparsed LHTML5 document basic syntax of is illustrated below. This example shows the use of four Modules that are instantiated using the `<html>`, `<block>`, `<news>` and `<footer>` elements. The `<html>` element invokes a module that adds a `<head>` tag. The `<block>` tag inserts a navigation bar. The `<h1>` element remains uninitiated. The `<news>` element pulls up to 20 news stories and display them with a thumbnail. The `<footer>` section is automatically populated.   
