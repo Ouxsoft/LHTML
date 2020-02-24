@@ -2,17 +2,19 @@
 
 [![Documentation Status](https://readthedocs.org/projects/lhtml5/badge/?version=latest)](https://lhtml5.readthedocs.io/en/latest/?badge=latest)
 
-Febuary 2020 Edition
+February 2020 Edition
 
 ## Introduction
-Living Hypertext Markup Language 5 (LHTML5) is a powerful and flexible way to build dynamic web pages. It's not a standard built for a web browser. It the communication standard for marking up pages sent from the web server to web stakeholders, including:
- + backend developer;
- + template designers;
+Living Hypertext Markup Language 5 (LHTML5) is a powerful and flexible way to build dynamic HTML5 web pages. LHTML5 has been adapted, over the subsequent years, to describe a standard for web server to build HTML5 documents that are customized for website stakeholders, including the following audiences:
+
+ + Backend developer;
+ + Template designers;
  + Search indexes;
+ + Frontend developers;
  + UX/UI designers;
  + WYSIWYG users; and
- + Web browser;
- 
+ + Web browser.
+  
 ### Copyright notice
 Copyright (c) 2017-present Matthew Heroux
 
@@ -42,8 +44,8 @@ The keywords "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SH
 ## Language
 
 ### HTML5 Spec Inheritance
-LHTML5 inheritance it's standards from the HTML5. 
-https://html.spec.whatwg.org/multipage/
+LHTML5 MUST adhere to HTML5 standards except for attributes and tags that instantiate modules LHTML5 modules. The [HTML5 spec](https://html.spec.whatwg.org/multipage/) defines how static markup documents are sent from the web server to the browser. 
+for when LHMTL5 inline modules additional elements and attributes which is the focus of this standard.
 
 ### Modifications
 
@@ -56,9 +58,9 @@ LHTML5 modules being able to alter the document and automate redundant elements.
 The embellished looks come from custom elements that are used to instantiate modules. 
 
 
-
 ### Example Document
-An unparsed LHTML5 document basic syntax of is illustrated below. This example shows the use of four Modules that are instantiated using the `<html>`, `<block>`, `<news>` and `<footer>` elements. The `<html>` element invokes a module that adds a `<head>` tag. The `<block>` tag inserts a navigation bar. The `<h1>` element remains uninitiated. The `<news>` element pulls up to 20 news stories and display them with a thumbnail. The `<footer>` section is automatically populated.   
+
+A basic LHTML5 unparsed document looks like this:
 
 ```html5
 <html>
@@ -72,8 +74,21 @@ An unparsed LHTML5 document basic syntax of is illustrated below. This example s
 </html>
 ```
 
+LHTML5 documents consist of tree elements containing attributes and inner text. The above example makes use of four Modules that are instantiated using the `<html>`, `<block>`, `<news>` and `<footer>` elements. The `<html>` element invokes a module that adds a `<head>` tag. The `<block>` tag is replaced by a HTML5 navigation bar. The `<h1>` element remains uninitiated and unaltered. The `<news>` element pulls up to 20 news stories and display them with a `<div>` containing thumbnails and a headline. The `<footer>` section is automatically populated with a copyright notice. 
+
 ### Modules
-As demonstrated in the above example, Modules are instantiated as object from elements. Not all elements are parsed. Only Modules defined in the parser config are turned to objects. The rest remain as is (as is the case with the `<h1>` tag in the above example). A module can either be placed using an existing HTML5 element or a custom element. 
+Modules are the worker bees of LHTML. During document parsing Modules are instantiated as object when elements are found using `xpath` expressions. Not all elements are parsed. Only Modules defined in the parser config are turned to objects. The rest remain unaltered. 
+
+#### Native Element
+A module can be instantiated using an existing HTML5 element. This is often the case when the element exist within the page but needs to be corrected or auto completed during parsing to a stakeholder.
+
+```html5
+<head/>
+``` 
+
+#### LHTML5 Elements
+A module can be instantiated using a element that does not exist within the HTML5 spec. This is useful for namespacing elements that WYSWYG users can drop into a page or defining new content. It's a way of adding a term to communicate a feature to web stakeholders. 
+ 
 ```html5
 <block/>
 ```
