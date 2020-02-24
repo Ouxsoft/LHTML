@@ -4,4 +4,10 @@
 
 Living Hypertext Markup Language 5 (LHTML5) is a powerful and flexible way to build dynamic HTML5 web pages. 
 
-+ Read the [specification](docs/README.md).
+Read the specification.
+
+Sources:
+
++ [Markdown](docs/README.md)
++ [Readthedocs](https://lhtml5.readthedocs.io/)
++ [GitHub Page](https://hxtree.github.io/lhtml5/)
