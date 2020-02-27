@@ -5,7 +5,7 @@
 February 2020 Edition
 
 ## Introduction
-Living Hypertext Markup Language 5 (LHTML5) is a powerful and flexible way to build dynamic HTML5 web pages. LHTML5 has been adapted, over the subsequent years, to describe a standard for web server to build HTML5 documents that are customized for website stakeholders, including the following audiences:
+Living Hypertext Markup Language 5 (LHTML5) was adapted, over the subsequent years, to describe a standard for web servers to store and build flexible dynamic HTML5 documents. HTML is a standard for describing content for the web browser. LHTML is a standard for communicating pages between all web stakeholder. The language is intentionally considerate communication between:
 
  + Backend developer;
  + Template designers;
@@ -14,7 +14,9 @@ Living Hypertext Markup Language 5 (LHTML5) is a powerful and flexible way to bu
  + UX/UI designers;
  + WYSIWYG users; and
  + Web browser.
-  
+ 
+LHTML5 uses a syntax that is similar to HTML5; it's as if the elements and attributes you wished HTML5 had were there. This help keep it simple as there is no need to learn another syntax. Rather than becoming an obstacle. This syntax layer serves as instruction for the LHTML5 parser. Mainly, they are used to instantiate modules which replace their origin with rendered content.
+
 ### Copyright notice
 Copyright (c) 2017-present Matthew Heroux
 
@@ -44,10 +46,9 @@ The keywords "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SH
 ## Language
 
 ### HTML5 Spec Inheritance
-LHTML5 MUST adhere to HTML5 standards except for attributes and tags that instantiate modules LHTML5 modules. The [HTML5 spec](https://html.spec.whatwg.org/multipage/) defines how static markup documents are sent from the web server to the browser. 
-for when LHMTL5 inline modules additional elements and attributes which is the focus of this standard.
+Except for providing instruction for LHTML5 modules, a LHTML5 document MUST adhere to HTML5 standards. The [HTML5 spec](https://html.spec.whatwg.org/multipage/) defines how static markup documents are sent from the web server to the browser. After a LHTML5 document is parsed it MUST adhere to the HTML5 standards without exception.
 
-### Modifications
+### LHTML5 Module Instructions
 
 LHTML5 can on the surface look like an oversimplified and somewhat embellished HTML5 document. 
 
