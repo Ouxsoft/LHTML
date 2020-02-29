@@ -5,17 +5,8 @@
 February 2020 Edition
 
 ## Introduction
-Living Hypertext Markup Language 5 (LHTML5) was adapted, over the subsequent years, to describe a standard for web servers to store and build flexible dynamic HTML5 documents. HTML is a standard for describing content for the web browser. LHTML is a standard for communicating pages between all web stakeholder. The language is intentionally considerate communication between:
-
- + Backend developer;
- + Template designers;
- + Search indexes;
- + Frontend developers;
- + UX/UI designers;
- + WYSIWYG users; and
- + Web browser.
- 
-LHTML5 uses a syntax that is similar to HTML5; it's as if the elements and attributes you wished HTML5 had were there. This help keep it simple as there is no need to learn another syntax. Rather than becoming an obstacle. This syntax layer serves as instruction for the LHTML5 parser. Mainly, they are used to instantiate modules which replace their origin with rendered content.
+Living Hypertext Markup Language 5 (LHTML5) was adapted, over the subsequent years, to describe a standard for web servers to store and flexibly build dynamic HTML5 documents. 
+LHTML5 syntax is similar to HTML5, which is a standard that describes content for the web browser, except that LHTML5 enables stakeholders to communicate through the presence of modular elements and attributes. These elements serve as instructions to instantiate modules, perform coordinated logic, and replace their origin with the rendered content. Anyone with knowledge of HTML5 should find LHTML5 simple to learn as there are only a few extra concepts. Let's dive right in. 
 
 ### Copyright notice
 Copyright (c) 2017-present Matthew Heroux
@@ -45,23 +36,22 @@ The keywords "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SH
 
 ## Language
 
+LHTML5 documents consist of tree elements containing attributes and inner text. The language is intentionally considerate of the roles and communication between:
+
+ + Backend developer;
+ + Template designers;
+ + Search indexes;
+ + Frontend developers;
+ + UX/UI designers;
+ + WYSIWYG users; and
+ + Web browser.
+
 ### HTML5 Spec Inheritance
-Except for providing instruction for LHTML5 modules, a LHTML5 document MUST adhere to HTML5 standards. The [HTML5 spec](https://html.spec.whatwg.org/multipage/) defines how static markup documents are sent from the web server to the browser. After a LHTML5 document is parsed it MUST adhere to the HTML5 standards without exception.
+The [HTML5 spec](https://html.spec.whatwg.org/multipage/) defines how static markup documents are sent from the web server to the browser. All LHTML5 elements and attributes MUST adhere to HTML5 standards except for those that are part of a element used to instantiate a module or its child arguments. If an LHTML5 document is build for site visitor then the built document SHOULD adhere to HTML5 standards without exception.
 
-### LHTML5 Module Instructions
+#### Example Document
 
-LHTML5 can on the surface look like an oversimplified and somewhat embellished HTML5 document. 
-
-The over simplicity stems from 
-
-LHTML5 modules being able to alter the document and automate redundant elements. 
-
-The embellished looks come from custom elements that are used to instantiate modules. 
-
-
-### Example Document
-
-A basic LHTML5 unparsed document looks like this:
+This is an example of an unparsed LHTML5 document:
 
 ```html5
 <html>
@@ -75,27 +65,43 @@ A basic LHTML5 unparsed document looks like this:
 </html>
 ```
 
-LHTML5 documents consist of tree elements containing attributes and inner text. The above example makes use of four Modules that are instantiated using the `<html>`, `<block>`, `<news>` and `<footer>` elements. The `<html>` element invokes a module that adds a `<head>` tag. The `<block>` tag is replaced by a HTML5 navigation bar. The `<h1>` element remains uninitiated and unaltered. The `<news>` element pulls up to 20 news stories and display them with a `<div>` containing thumbnails and a headline. The `<footer>` section is automatically populated with a copyright notice. 
+This example makes use of four Modules. These modules are instantiated using the `<html>`, `<block>`, `<news>` and `<footer>` elements. The `<html>` element invokes a module that adds the completed `<head>` element. The `<block>` element is replaced by a fully built HTML5 navigation bar. The `<h1>` element is part of the static page content; itt remains uninitiated and unaltered. The `<news>` element pulls up to 20 news stories from a database and display them with a `<div>` containing thumbnails and a headline. The `<footer>` section is automatically populated with a copyright notice. 
 
 ### Modules
-Modules are the worker bees of LHTML. During document parsing Modules are instantiated as object when elements are found using `xpath` expressions. Not all elements are parsed. Only Modules defined in the parser config are turned to objects. The rest remain unaltered. 
+Modules are the worker bees of LHTML. Potential uses of LHTML5 modules include:
 
-#### Native Element
-A module can be instantiated using an existing HTML5 element. This is often the case when the element exist within the page but needs to be corrected or auto completed during parsing to a stakeholder.
++ reduce architectural debt and clutter of redundant elements present across multiple pages;
++ extend backend features to frontend WYSIWYG users;
++ transform existing elements to ensure compliance;
++ increase productivity by allowing for HTML5 short hand;
++ separate complex page logic from the template;
++ embed simple conditional logic;
++ enable the use of dynamic content (such as variables);
++ custom elements that are used to instantiate modules; and
++ others.
+
+#### Construction
+The parser's config defines the `xpath` expression and `class_name` used to find elements and instantiate them as modules.
+ 
+#### Xpath Expression
+During document parsing, when elements are found using the Module's `xpath` expressions the Module is instantiated as object. Not all elements are parsed. Only Modules defined in the parser config are turned to objects. The rest remain unaltered. 
+
+##### Native Elements
+Modules can be instantiated using an existing a HTML5 element. This is often the case when the element exist within the page but needs to be corrected or auto completed during parsing.
 
 ```html5
 <head/>
 ``` 
 
-#### LHTML5 Elements
-A module can be instantiated using a element that does not exist within the HTML5 spec. This is useful for namespacing elements that WYSWYG users can drop into a page or defining new content. It's a way of adding a term to communicate a feature to web stakeholders. 
+##### Custom Elements
+A module can be instantiated using a element that does not exist within the HTML5 spec. This is useful for namespacing custom elements that WYSIWYG users can drop into a page or when defining new content types. It's a way of adding a term to communicate a feature to web stakeholders. 
  
 ```html5
 <block/>
 ```
 
-#### Construction
-The parser's config defines the `xpath` expression and `class_name` used to find elements and instantiate them as modules. That `class_name` may useh the element's attributes as variables to resolve the class. Depending on the config, the following may show an example of a module that is instantiated as the either the class `Modules/Block/Test` or `Modules/Block`.
+#### Class Name
+The Module's `class_name` may use the element's attributes as variables to resolve the class. Depending on the config, the following may show an example of a module that is instantiated the either the class `Modules/Block/Test` or `Modules/Block`.
 
 ```html5
 <block name="Test"/>
@@ -162,9 +168,7 @@ If `div` were a module in the above example, the following would be true:
 The config defines method calls to be orchestrated against all the modules instantiated. The methods can differ project to project but it stands to reason that one of the last ones will render the output from the module and its content will replace the original element entirely.
 
 ## Well-Formatted
-LHTML5 is a well-formatted markup scripting language; Coldfusion is not. In ColdFusion items like <cfelse> in <cfif><cfelse></cfif> are not open and closed meaning it is not well-formatted. 
+LHTML5 is a well-formatted markup scripting language. It is RECOMMEND to close tags that are opened. 
 
 ## Customizable Tags
-The LHTML5 design encourages the create of Module, such as navbar, rather than building a 10 layer deep statement of conditions. Unlikely ColdFusion, LHTML5 relies less on large nested objects that can be hard to read.
-
-Coldfusion limits developers to a set of prebuilt tags. In LHTML5 any tag can be used. And pre-exist HTML5 tags can be enhanced or transformed. For example, with LHTML5 for accessibility compliance, the alt attribute could be set to decorator when missing from img elements.
+In LHTML5 any tag can be used. And pre-exist HTML5 tags can be enhanced or transformed. For example, with LHTML5 for accessibility compliance, the alt attribute could be set to decorator when missing from img elements. LHTML5 discourages large nested logical elements that can be hard to read. The design encourages the creation of Module rather than building a 10 layer deep statement of conditions. 
