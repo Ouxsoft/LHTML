@@ -61,7 +61,7 @@ An LHTML5 document SHOULD adhere to [HTML5 spec](https://html.spec.whatwg.org/mu
 
 
 #### Example Document
-When an LHTML5 document is build for site visitor it SHOULD adhere to HTML5 standards without exception. The following is an example of an unparsed LHTML5 document, which would not be suitable to send to a vistor's web browser not built. 
+When an LHTML5 document is build for site visitor it SHOULD adhere to HTML5 standards without exception. The following is an example of an unparsed LHTML5 document, which would not be suitable to send to a vistor's web browser without properly being built by a LHTML5 parser. 
 
 ```html5
 <html>
