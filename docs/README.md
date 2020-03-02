@@ -63,21 +63,9 @@ When an LHTML5 document is build for site visitor it SHOULD adhere to HTML5 stan
 ```
 
 This example makes use of four Modules. These modules are instantiated using the `<html>`, `<block>`, `<news>` and `<footer>` elements. The `<html>` element invokes a module that adds the completed `<head>` element. The `<block>` element is replaced by a fully built HTML5 navigation bar. The `<h1>` element is part of the static page content; itt remains uninitiated and unaltered. The `<news>` element pulls up to 20 news stories from a database and display them with a `<div>` containing thumbnails and a headline. The `<footer>` section is automatically populated with a copyright notice. 
-
-
-### Stakeholder Driven Dialect
-LHTML module elements are driven by development and SHOULD be project specific. In many ways the creation of these elements forms a language dialect. This dialect SHOULD be considerate of the project's stakeholders roles and inner communication requirements. Stakeholder MAY include any of the following:
-
- + Backend developer;
- + Template designers;
- + Search indexes;
- + Frontend developers;
- + UX/UI designers;
- + WYSIWYG users; and
- + Web browser.
  
 ### Modules
-Modules are the worker bees of LHTML. Potential uses of LHTML5 modules include:
+LHTML5 is a modular language for emergent purposes. Modules are the worker bees of LHTML. Potential uses of LHTML5 modules include, but are not limited to:
 
 + reduce architectural debt and clutter of redundant elements present across multiple pages;
 + extend backend features to frontend WYSIWYG users;
@@ -89,32 +77,50 @@ Modules are the worker bees of LHTML. Potential uses of LHTML5 modules include:
 + custom elements that are used to instantiate modules; and
 + others.
 
-#### Construction
-The parser's config defines the `xpath` expression and `class_name` used to find elements and instantiate them as modules.
- 
-#### Xpath Expression
-During document parsing, when elements are found using the Module's `xpath` expressions the Module is instantiated as object. Not all elements are parsed. Only Modules defined in the parser config are turned to objects. The rest remain unaltered. 
+#### Stakeholder Driven Dialect
+A project specific LHTML5 language dialect MAY result from the addition of modules with custom elements and attributes. The effectiveness of the dialect to act as a message for stakeholders to communicate can be a decisive factor in the dialect's success and thus the project's success. A critical step in a successful dialect design is considering how project stakeholders will use the dialect as a message to communicate. Dialect stakeholders MAY include any of the following:
 
-##### Native Elements
+ + Backend developer;
+ + Template designers;
+ + Search indexes;
+ + Frontend developers;
+ + UX/UI designers;
+ + WYSIWYG users; and
+ + Web browser.
+
+#### Construction
+The parser's config SHOULD determine which modules to instantiate. Each module within this config MUST specific  the following fields:
+
+| Field | Summary |
+| --- | --- |
+| `name` | Machine readable identifier for the module. |
+| `xpath` | Find elements within the document using an XPath expression. |
+| `class_name` | Determines what class to instantiate the module as. Maybe either a custom element or a native HTML5 element. |
+ 
+##### XPath Expression 
+During parsing, a Module is instantiated as object when elements are found within the document using XPath  expressions. Only Modules defined in the parser config that are found within the document are turned to objects. Elements not found MUST not be instantiated and SHOULD remain unaltered. 
+
+##### Class Name
+During parsing, a modules `class_name` determines what class the module is instantiated as. The Module's `class_name` may use the element's attributes as variables to resolve the class. Depending on the config, the following may show an example of a module that is instantiated the either the class `Modules/Block/Test` or `Modules/Block`.
+
+```html5
+<block name="Test"/>
+```
+
+###### Native Elements
 Modules can be instantiated using an existing a HTML5 element. This is often the case when the element exist within the page but needs to be corrected or auto completed during parsing.
 
 ```html5
 <head/>
 ``` 
 
-##### Custom Elements
+###### Custom Elements
 A module can be instantiated using a element that does not exist within the HTML5 spec. This is useful for namespacing custom elements that WYSIWYG users can drop into a page or when defining new content types. It's a way of adding a term to communicate a feature to web stakeholders. 
  
 ```html5
 <block/>
 ```
 
-#### Class Name
-The Module's `class_name` may use the element's attributes as variables to resolve the class. Depending on the config, the following may show an example of a module that is instantiated the either the class `Modules/Block/Test` or `Modules/Block`.
-
-```html5
-<block name="Test"/>
-```
 
 ## `args`
 During runtime the parser takes specified elements and instantiates them as objects. The element can feature arguments that are passed to the Module as properties. An argument's purpose is to be passed as a parameter, used by a module's method.
