@@ -36,7 +36,7 @@ The keywords "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SH
 
 ## Language
 
-LHTML5 documents MUST consist of tree elements containing attributes and inner text. The language when implemented SHOULD be considerate of the stakeholders roles and inner communication. These stakeholder MAY include any of the following:
+LHTML5 documents MUST consist of tree elements containing attributes and inner text. The language when implemented SHOULD be considerate of the project's stakeholders roles and inner communication requirements. These stakeholder MAY include any of the following:
 
  + Backend developer;
  + Template designers;
@@ -47,11 +47,21 @@ LHTML5 documents MUST consist of tree elements containing attributes and inner t
  + Web browser.
 
 ### HTML5 Spec Inheritance
-The [HTML5 spec](https://html.spec.whatwg.org/multipage/) defines how static markup documents are sent from the web server to the browser. All LHTML5 elements and attributes MUST adhere to HTML5 standards except for those that are part of a element used to instantiate a module or its child arguments. If an LHTML5 document is build for site visitor then the built document SHOULD adhere to HTML5 standards without exception.
+An LHTML5 document SHOULD adhere to [HTML5 spec](https://html.spec.whatwg.org/multipage/) spec (as it details how markup documents are delivered to the browser) except where an element instantiates module or contains child arguments. This exception is evident in the following example, which shows a valid HTML5 document with the exception of a valid `<head>` attribute as this element is instantiate a module which replaces the content with valid content. 
+
+```html5
+<!doctype html>
+<html lang="en">
+<head type="default"/>
+<body>
+  <script src="js/scripts.js"></script>
+</body>
+</html>
+```
+
 
 #### Example Document
-
-This is an example of an unparsed LHTML5 document:
+When an LHTML5 document is build for site visitor it SHOULD adhere to HTML5 standards without exception. The following is an example of an unparsed LHTML5 document, which would not be suitable to send to a vistor's web browser not built. 
 
 ```html5
 <html>
