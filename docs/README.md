@@ -32,22 +32,10 @@ THE SOFTWARE.
 ### Conformance
 A conforming implementation of LHTML5 must fulfill all normative requirements. Conformance requirements are described in this document via both descriptive assertions and key words with clearly defined meanings.
 
-The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY ", and "OPTIONAL" will be used as defined in RFC 2119 [RFC2119](https://www.ietf.org/rfc/rfc2119.txt). When used with the normative RFC2119 meanings, they will be all uppercase. Occurrences of these words in lowercase comprise normal prose usage, with no normative implications.
+The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY ", and "OPTIONAL" will be used as defined in [RFC2119](https://www.ietf.org/rfc/rfc2119.txt). When used with the normative RFC2119 meanings, they will be all uppercase. Occurrences of these words in lowercase comprise normal prose usage, with no normative implications.
 
 ## Language
-
-LHTML5 documents MUST consist of tree elements containing attributes and inner text. The language when implemented SHOULD be considerate of the project's stakeholders roles and inner communication requirements. These stakeholder MAY include any of the following:
-
- + Backend developer;
- + Template designers;
- + Search indexes;
- + Frontend developers;
- + UX/UI designers;
- + WYSIWYG users; and
- + Web browser.
-
-### HTML5 Spec Inheritance
-An LHTML5 document SHOULD adhere to [HTML5 spec](https://html.spec.whatwg.org/multipage/) (as it details how markup documents are delivered to the browser) except where an element instantiates module or contains child arguments. This exception is evident in the following example, which shows a valid HTML5 document with the exception of a valid `<head>` attribute as this element is instantiate a module which replaces the content with valid content. 
+LHTML5 documents MUST consist of tree elements containing attributes and inner text. The documents SHOULD adhere to [HTML5 spec](https://html.spec.whatwg.org/multipage/) (as it details how markup documents are delivered to the browser) ***except*** where module elements and child arguments are present. This exception is evident in the following example, which shows a valid HTML5 document with the exception of a valid `<head>` attribute as this element is instantiate a module which replaces the content with valid content. 
 
 ```html5
 <!doctype html>
@@ -58,7 +46,6 @@ An LHTML5 document SHOULD adhere to [HTML5 spec](https://html.spec.whatwg.org/mu
 </body>
 </html>
 ```
-
 
 #### Example Document
 When an LHTML5 document is build for site visitor it SHOULD adhere to HTML5 standards without exception. The following is an example of an unparsed LHTML5 document, which would not be suitable to send to a vistor's web browser without properly being built by a LHTML5 parser. 
@@ -77,6 +64,18 @@ When an LHTML5 document is build for site visitor it SHOULD adhere to HTML5 stan
 
 This example makes use of four Modules. These modules are instantiated using the `<html>`, `<block>`, `<news>` and `<footer>` elements. The `<html>` element invokes a module that adds the completed `<head>` element. The `<block>` element is replaced by a fully built HTML5 navigation bar. The `<h1>` element is part of the static page content; itt remains uninitiated and unaltered. The `<news>` element pulls up to 20 news stories from a database and display them with a `<div>` containing thumbnails and a headline. The `<footer>` section is automatically populated with a copyright notice. 
 
+
+### Stakeholder Driven Dialect
+LHTML module elements are driven by development and SHOULD be project specific. In many ways the creation of these elements forms a language dialect. This dialect SHOULD be considerate of the project's stakeholders roles and inner communication requirements. Stakeholder MAY include any of the following:
+
+ + Backend developer;
+ + Template designers;
+ + Search indexes;
+ + Frontend developers;
+ + UX/UI designers;
+ + WYSIWYG users; and
+ + Web browser.
+ 
 ### Modules
 Modules are the worker bees of LHTML. Potential uses of LHTML5 modules include:
 
