@@ -47,7 +47,7 @@ LHTML5 documents MUST consist of tree elements containing attributes and inner t
  + Web browser.
 
 ### HTML5 Spec Inheritance
-An LHTML5 document SHOULD adhere to [HTML5 spec](https://html.spec.whatwg.org/multipage/) spec (as it details how markup documents are delivered to the browser) except where an element instantiates module or contains child arguments. This exception is evident in the following example, which shows a valid HTML5 document with the exception of a valid `<head>` attribute as this element is instantiate a module which replaces the content with valid content. 
+An LHTML5 document SHOULD adhere to [HTML5 spec](https://html.spec.whatwg.org/multipage/) (as it details how markup documents are delivered to the browser) except where an element instantiates module or contains child arguments. This exception is evident in the following example, which shows a valid HTML5 document with the exception of a valid `<head>` attribute as this element is instantiate a module which replaces the content with valid content. 
 
 ```html5
 <!doctype html>
