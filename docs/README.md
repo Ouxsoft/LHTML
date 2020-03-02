@@ -32,11 +32,11 @@ THE SOFTWARE.
 ### Conformance
 A conforming implementation of LHTML5 must fulfill all normative requirements. Conformance requirements are described in this document via both descriptive assertions and key words with clearly defined meanings.
 
-The keywords "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY ", and "OPTIONAL" will be used as defined in RFC 2119 [RFC2119](https://www.w3.org/TR/2004/WD-qaframe-spec-20040830/#RFC2119). When used with the normative RFC2119 meanings, they will be all uppercase. Occurrences of these words in lowercase comprise normal prose usage, with no normative implications.
+The keywords "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY ", and "OPTIONAL" will be used as defined in RFC 2119 [RFC2119](https://www.ietf.org/rfc/rfc2119.txt). When used with the normative RFC2119 meanings, they will be all uppercase. Occurrences of these words in lowercase comprise normal prose usage, with no normative implications.
 
 ## Language
 
-LHTML5 documents consist of tree elements containing attributes and inner text. The language is intentionally considerate of the roles and communication between:
+LHTML5 documents MUST consist of tree elements containing attributes and inner text. The language when implemented SHOULD be considerate of the stakeholders roles and inner communication. These stakeholder MAY include any of the following:
 
  + Backend developer;
  + Template designers;
