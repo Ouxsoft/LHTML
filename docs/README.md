@@ -6,7 +6,8 @@ February 2020 Edition
 
 ## Introduction
 Living Hypertext Markup Language 5 (LHTML5) was adapted, over the subsequent years, to describe a standard for web servers to store and flexibly build dynamic HTML5 documents. 
-LHTML5 syntax is similar to HTML5, which is a standard that describes content for the web browser, except that LHTML5 enables stakeholders to communicate through the presence of modular elements and attributes. These elements serve as instructions to instantiate modules, perform coordinated logic, and replace their origin with the rendered content. Anyone with knowledge of HTML5 should find LHTML5 simple to learn as there are only a few extra concepts. Let's dive right in. 
+
+LHTML5 syntax is similar to HTML5, which is a standard that describes content for the web browser. Unlike HTML5. LHTML5 enables a website's internal stakeholders to communicate through the presence of modular elements and attributes. These serve as instructions to instantiate modules, perform coordinated logical functions, and replace their origin with the rendered content. Anyone with knowledge of HTML5 should find LHTML5 simple to learn as there are only a few extra concepts. Let's dive right in! 
 
 ### Copyright notice
 Copyright (c) 2017-present Matthew Heroux
@@ -34,9 +35,27 @@ A conforming implementation of LHTML5 must fulfill all normative requirements. C
 
 The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY ", and "OPTIONAL" will be used as defined in [RFC2119](https://www.ietf.org/rfc/rfc2119.txt). When used with the normative RFC2119 meanings, they will be all uppercase. Occurrences of these words in lowercase comprise normal prose usage, with no normative implications.
 
-## Language
-LHTML5 documents MUST consist of tree elements containing attributes and inner text. The documents SHOULD adhere to [HTML5 spec](https://html.spec.whatwg.org/multipage/) (as it details how markup documents are delivered to the browser) ***except*** where module elements and child arguments are present. This exception is evident in the following example, which shows a valid HTML5 document with the exception of a valid `<head>` attribute as this element is instantiate a module which replaces the content with valid content. 
+## Overview
+The LHTML5 spec defines both a base language and a standard for parsing dynamic web page documents.
 
+## Language
+Web servers use LHTML5 language to store and communicate dynamic web pages. A document consisting of this language (referred to as a "LHTML5 document") is past into a parser to build a HTML5 page. Like HTML5, a LHTML5 document MUST consist of tree elements containing attributes and inner text. The document SHOULD adhere to [HTML5 spec](https://html.spec.whatwg.org/multipage/) (as it details how modern markup documents are delivered to the browser) ***except*** where module elements and child arguments are present. 
+
+#### Custom Dialect
+Design custom elements and attributes thoughtfully. The use of custom markup elements and attributes shapes the project's LHTML5 language dialect. A decisive factor in a project dialect's success (and thus the project's success) is its effectiveness communicate a message between its stakeholders. A dialect's design is RECOMMENDED to carry a message that allows project stakeholders to effectively communicate. These stakeholders MAY include any of the following:
+
++ Backend developer;
++ Template designers;
++ Search indexes;
++ Frontend developers;
++ UX/UI designers;
++ WYSIWYG users; and
++ the Web browser.
+
+##### Attributes
+LHTML5 modules allow for the language to make use of custom attributes that are not defined in the HTML5 spec. The following example show an invalid HTML5 attribute, "type", within the `<head>` element. When this document is past to an LHTML5 parser (along with the proper config and modules) the parser will instantiate the `<head>` element as a module and replaces the invalid element with HTML5 valid render content. 
+
+###### Example 
 ```html5
 <!doctype html>
 <html lang="en">
@@ -47,9 +66,11 @@ LHTML5 documents MUST consist of tree elements containing attributes and inner t
 </html>
 ```
 
-#### Example Document
-When an LHTML5 document is build for site visitor it SHOULD adhere to HTML5 standards without exception. The following is an example of an unparsed LHTML5 document, which would not be suitable to send to a vistor's web browser without properly being built by a LHTML5 parser. 
+##### Elements
+LHTML5 modules allow for the language to also make use of custom elements that are not defined in the HTML5 spec. When an LHTML5 document is build for site visitor it SHOULD adhere to HTML5 standards without exception. The following is an example of an unparsed LHTML5 document, which is
+clearly unsuitable to send to a visitor's web browser without having been passed through an LHTML5 parser. 
 
+###### Example
 ```html5
 <html>
     <block name="NavBar" style="light"/>
@@ -63,8 +84,24 @@ When an LHTML5 document is build for site visitor it SHOULD adhere to HTML5 stan
 ```
 
 This example makes use of four Modules. These modules are instantiated using the `<html>`, `<block>`, `<news>` and `<footer>` elements. The `<html>` element invokes a module that adds the completed `<head>` element. The `<block>` element is replaced by a fully built HTML5 navigation bar. The `<h1>` element is part of the static page content; itt remains uninitiated and unaltered. The `<news>` element pulls up to 20 news stories from a database and display them with a `<div>` containing thumbnails and a headline. The `<footer>` section is automatically populated with a copyright notice. 
- 
-### Modules
+
+### Parsing
+#### Builders
+The same LHTML5 document may be built different ways depending on the specified builder. 
+
+#### Configuration
+
+#### Construction
+The parser's config SHOULD be responsible for determining which modules to instantiate. This config MUST 
+describe each module using the following fields:
+
+| Field | Summary |
+| --- | ---| 
+| `name` | Machine readable identifier for the module. |
+| `xpath` | Find elements within the document using an XPath expression. |
+| `class_name` | Determines what class to instantiate the module as. Maybe either a custom element or a native HTML5 element. |
+
+#### Modules
 LHTML5 is a modular language for emergent purposes. Modules are the worker bees of LHTML. Potential uses of LHTML5 modules include, but are not limited to:
 
 + reduce architectural debt and clutter of redundant elements present across multiple pages;
@@ -77,50 +114,26 @@ LHTML5 is a modular language for emergent purposes. Modules are the worker bees 
 + custom elements that are used to instantiate modules; and
 + others.
 
-#### Stakeholder Driven Dialect
-A project specific LHTML5 language dialect MAY result from the addition of modules with custom elements and attributes. The effectiveness of the dialect to act as a message for stakeholders to communicate can be a decisive factor in the dialect's success and thus the project's success. A critical step in a successful dialect design is considering how project stakeholders will use the dialect as a message to communicate. Dialect stakeholders MAY include any of the following:
-
- + Backend developer;
- + Template designers;
- + Search indexes;
- + Frontend developers;
- + UX/UI designers;
- + WYSIWYG users; and
- + Web browser.
-
-#### Construction
-The parser's config SHOULD determine which modules to instantiate. Each module within this config MUST specific  the following fields:
-
-| Field | Summary |
-| --- | --- |
-| `name` | Machine readable identifier for the module. |
-| `xpath` | Find elements within the document using an XPath expression. |
-| `class_name` | Determines what class to instantiate the module as. Maybe either a custom element or a native HTML5 element. |
  
 ##### XPath Expression 
-During parsing, a Module is instantiated as object when elements are found within the document using XPath  expressions. Only Modules defined in the parser config that are found within the document are turned to objects. Elements not found MUST not be instantiated and SHOULD remain unaltered. 
+A Module is instantiated as object when elements are found within the document using XPath expressions. Only Modules defined in the parser config that are found within the document are turned to objects. 
+
+| Type | Example | Description |
+| --- | --- | --- |
+| Native | `<head/>`  | A module instantiated using an preexisting HTML5 element. This is often the case when the element exist within the page but needs to be corrected or auto completed during parsing. | 
+| Custom | `<block/>` | A module instantiated using a element not defined within the HTML5 spec. This is useful for namespacing custom elements that WYSIWYG users can drop into a page or when defining new content types. It's a way of adding a term to communicate a feature to web stakeholders. |
+
+Elements not found MUST not be instantiated and SHOULD remain unaltered. 
 
 ##### Class Name
-During parsing, a modules `class_name` determines what class the module is instantiated as. The Module's `class_name` may use the element's attributes as variables to resolve the class. Depending on the config, the following may show an example of a module that is instantiated the either the class `Modules/Block/Test` or `Modules/Block`.
+During parsing, a modules `class_name` determines what class the module is instantiated as. These class name
+The type 
 
-```html5
-<block name="Test"/>
-```
+The Module's `class_name` may use the element's attributes as variables to resolve the class. Depending on the config, the following may show an example of a module that is instantiated the either the class `Modules/Block/Test` or `Modules/Block`.
 
-###### Native Elements
-Modules can be instantiated using an existing a HTML5 element. This is often the case when the element exist within the page but needs to be corrected or auto completed during parsing.
-
-```html5
-<head/>
-``` 
-
-###### Custom Elements
-A module can be instantiated using a element that does not exist within the HTML5 spec. This is useful for namespacing custom elements that WYSIWYG users can drop into a page or when defining new content types. It's a way of adding a term to communicate a feature to web stakeholders. 
- 
-```html5
-<block/>
-```
-
+Classes not found should be marked with one of the following error handlers
+<~-- NOT FOUND -->
+<~-- NOT FOUND -->
 
 ## `args`
 During runtime the parser takes specified elements and instantiates them as objects. The element can feature arguments that are passed to the Module as properties. An argument's purpose is to be passed as a parameter, used by a module's method.
