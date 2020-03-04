@@ -5,13 +5,13 @@
 March 2020 Edition
 
 ## Introduction
-Living Hypertext Markup Language 5 (LHTML5) spec powers web servers to store and flexibly build dynamic HTML5 documents. The spec consists of two parts: a document language and interrupter standard. 
+Living Hypertext Markup Language 5 (LHTML5) builds dynamic HTML5 documents. The spec has two parts: a document language and an interrupter standard. 
 
-The document language defines the standard for a LHTML5 document (referred to hereinafter referred to as a "document"). Its syntax is similar to that of HTML5. Unlike HTML5, which describes content for the web browser, LHMTL5 defines a language that enables a website's internal stakeholders to communicate. This communication occurs through the presence of modular (often custom) elements and attributes.
+The document language defines the standard for a LHTML5 document (referred to as a "document"). Its syntax is similar HTML5 but permits additional custom elements and attributes. Unlike HTML5, which describes content for the web browser, LHMTL5 allows internal stakeholders to create parsable blueprints that produce dynamic pages.
 
-The interrupter standard defines the standard for how the document language is built. A document is past into program (hereinafter referred to as "parser") that build a HTML5 page. It focuses primarily on how the modular elements and attributes serve as instructions to instantiate modules, perform coordinated logical functions, and replace their origin with the rendered content. 
+The interrupter standard defines how the document language is built. A document is past into program (referred to as "parser") that build a HTML5 page. It focuses primarily on how configured elements and attributes serve as instructions to instantiate modules, perform coordinated logical functions, and replace themselves with rendered content. 
 
-Anyone familiar with HTML5 will find LHTML5 a breeze. Let's dive right in! 
+Anyone familiar with HTML5 should find LHTML5 a breeze. Let's dive right in! 
 
 ### Copyright notice
 Copyright (c) 2017-present Matthew Heroux
@@ -40,16 +40,16 @@ A conforming implementation of LHTML5 must fulfill all normative requirements. C
 The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY ", and "OPTIONAL" will be used as defined in [RFC2119](https://www.ietf.org/rfc/rfc2119.txt). When used with the normative RFC2119 meanings, they will be all uppercase. Occurrences of these words in lowercase comprise normal prose usage, with no normative implications.
 
 ## Document Language
-The document language is the blueprints for a dynamic web page. It communicates the design between the internal stakeholders. A document MUST consist of tree elements that contain attributes. It SHOULD adhere to the [HTML5 spec](https://html.spec.whatwg.org/multipage/), which details how modern markup documents are delivered to the browser, with a limited exceptions. 
+The document contents are the blueprints for a dynamic web page. They allow internal stakeholders to communicate the design of a page. The document SHOULD adhere to the [HTML5 spec](https://html.spec.whatwg.org/multipage/), which details how modern markup documents are delivered to the browser, with limited exceptions. It MUST consist of tree elements that contain attributes. 
 
 ## Exceptions
-The exceptions from the HTML5 standard include the optional presence of custom attributes, custom elements, and argument elements.
+Document exceptions from the HTML5 standard are optional and include the presence of custom attributes, custom elements, and argument elements. These exceptions serve as instructions for the parser. Builders generally replace these with rendered dynamic content that is not stored within the document.
 
 ### Custom Attributes
 The document language permits the use of custom element attributes, which are not defined in the HTML5 spec. 
 
 #### Example 
-The following example show an invalid HTML5 attribute, "type", within the `<head>` element. When this document is past to an LHTML5 parser (along with the proper config and modules) the parser will instantiate the `<head>` element as a module and replaces the invalid element with HTML5 valid render content. 
+The following example show an invalid HTML5 attribute, "type", within the `<head>` element. When this document is passed to an LHTML5 parser (along with the proper config and modules) the parser will instantiate the `<head>` element as a module and replaces the invalid element with HTML5 valid render content. 
 
 ```html5
 <!doctype html>
@@ -95,7 +95,7 @@ In the following example, `block` features an argument named `min` set to a valu
 ```
 
 ### Dialect
-Thoughtfully design any custom elements and attributes as they alter the languages dialect. The very use of custom markup elements and attributes alters and shapes the project's LHTML5 language dialect. A decisive factor in a project dialect's success (and thus the project's success) is its effectiveness communicate a message between its stakeholders. A dialect's design is RECOMMENDED to carry a message that allows project stakeholders to effectively communicate. These stakeholders MAY include any of the following:
+The presence of custom elements and attributes in turn alters and shapes the project's dialect. That is why it is important to thoughtfully design these language changes. A decisive factor in success of a dialect (and thus the project's success) is its effectiveness to serve as a message to communicate between its stakeholders. A dialect's design is RECOMMENDED to carry a message that allows project stakeholders to effectively communicate. These stakeholders MAY include any of the following:
 
 + Backend developer;
 + Template designers;
