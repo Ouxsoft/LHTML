@@ -2,12 +2,16 @@
 
 [![Documentation Status](https://readthedocs.org/projects/lhtml5/badge/?version=latest)](https://lhtml5.readthedocs.io/en/latest/?badge=latest)
 
-February 2020 Edition
+March 2020 Edition
 
 ## Introduction
-Living Hypertext Markup Language 5 (LHTML5) was adapted, over the subsequent years, to describe a standard for web servers to store and flexibly build dynamic HTML5 documents. 
+Living Hypertext Markup Language 5 (LHTML5) spec powers web servers to store and flexibly build dynamic HTML5 documents. The spec consists of two parts: a document language and interrupter standard. 
 
-LHTML5 syntax is similar to HTML5, which is a standard that describes content for the web browser. Unlike HTML5. LHTML5 enables a website's internal stakeholders to communicate through the presence of modular elements and attributes. These serve as instructions to instantiate modules, perform coordinated logical functions, and replace their origin with the rendered content. Anyone with knowledge of HTML5 should find LHTML5 simple to learn as there are only a few extra concepts. Let's dive right in! 
+The document language defines the standard for a LHTML5 document (referred to hereinafter referred to as a "document"). Its syntax is similar to that of HTML5. Unlike HTML5, which describes content for the web browser, LHMTL5 defines a language that enables a website's internal stakeholders to communicate. This communication occurs through the presence of modular (often custom) elements and attributes.
+
+The interrupter standard defines the standard for how the document language is built. A document is past into program (hereinafter referred to as "parser") that build a HTML5 page. It focuses primarily on how the modular elements and attributes serve as instructions to instantiate modules, perform coordinated logical functions, and replace their origin with the rendered content. 
+
+Anyone familiar with HTML5 will find LHTML5 a breeze. Let's dive right in! 
 
 ### Copyright notice
 Copyright (c) 2017-present Matthew Heroux
@@ -35,27 +39,18 @@ A conforming implementation of LHTML5 must fulfill all normative requirements. C
 
 The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY ", and "OPTIONAL" will be used as defined in [RFC2119](https://www.ietf.org/rfc/rfc2119.txt). When used with the normative RFC2119 meanings, they will be all uppercase. Occurrences of these words in lowercase comprise normal prose usage, with no normative implications.
 
-## Overview
-The LHTML5 spec defines both a base language and a standard for parsing dynamic web page documents.
+## Document Language
+The document language is the blueprints for a dynamic web page. It communicates the design between the internal stakeholders. A document MUST consist of tree elements that contain attributes. It SHOULD adhere to the [HTML5 spec](https://html.spec.whatwg.org/multipage/), which details how modern markup documents are delivered to the browser, with a limited exceptions. 
 
-## Language
-Web servers use LHTML5 language to store and communicate dynamic web pages. A document consisting of this language (referred to as a "LHTML5 document") is past into a parser to build a HTML5 page. Like HTML5, a LHTML5 document MUST consist of tree elements containing attributes and inner text. The document SHOULD adhere to [HTML5 spec](https://html.spec.whatwg.org/multipage/) (as it details how modern markup documents are delivered to the browser) ***except*** where module elements and child arguments are present. 
+## Exceptions
+The exceptions from the HTML5 standard include the optional presence of custom attributes, custom elements, and argument elements.
 
-#### Custom Dialect
-Design custom elements and attributes thoughtfully. The use of custom markup elements and attributes shapes the project's LHTML5 language dialect. A decisive factor in a project dialect's success (and thus the project's success) is its effectiveness communicate a message between its stakeholders. A dialect's design is RECOMMENDED to carry a message that allows project stakeholders to effectively communicate. These stakeholders MAY include any of the following:
+### Custom Attributes
+The document language permits the use of custom element attributes, which are not defined in the HTML5 spec. 
 
-+ Backend developer;
-+ Template designers;
-+ Search indexes;
-+ Frontend developers;
-+ UX/UI designers;
-+ WYSIWYG users; and
-+ the Web browser.
+#### Example 
+The following example show an invalid HTML5 attribute, "type", within the `<head>` element. When this document is past to an LHTML5 parser (along with the proper config and modules) the parser will instantiate the `<head>` element as a module and replaces the invalid element with HTML5 valid render content. 
 
-##### Attributes
-LHTML5 modules allow for the language to make use of custom attributes that are not defined in the HTML5 spec. The following example show an invalid HTML5 attribute, "type", within the `<head>` element. When this document is past to an LHTML5 parser (along with the proper config and modules) the parser will instantiate the `<head>` element as a module and replaces the invalid element with HTML5 valid render content. 
-
-###### Example 
 ```html5
 <!doctype html>
 <html lang="en">
@@ -66,11 +61,14 @@ LHTML5 modules allow for the language to make use of custom attributes that are 
 </html>
 ```
 
-##### Elements
-LHTML5 modules allow for the language to also make use of custom elements that are not defined in the HTML5 spec. When an LHTML5 document is build for site visitor it SHOULD adhere to HTML5 standards without exception. The following is an example of an unparsed LHTML5 document, which is
-clearly unsuitable to send to a visitor's web browser without having been passed through an LHTML5 parser. 
+### Custom Elements
+LHTML5 modules allow for the language to also make use of custom elements that are not defined in the HTML5 spec. When an LHTML5 document is build for site visitor it SHOULD adhere to HTML5 standards without exception. 
 
-###### Example
+#### Example
+The following shows an example of an unparsed document containing a few custom elements. This document would not be suitable to send to a site visitor's web browser without having been pass through to a parser.
+
+This example makes use of four Modules. These modules are instantiated using the `<html>`, `<block>`, `<news>` and `<footer>` elements. The `<html>` element invokes a module that adds the completed `<head>` element. The `<block>` element is replaced by a fully built HTML5 navigation bar. The `<h1>` element is part of the static page content; itt remains uninitiated and unaltered. The `<news>` element pulls up to 20 news stories from a database and display them with a `<div>` containing thumbnails and a headline. The `<footer>` section is automatically populated with a copyright notice.
+
 ```html5
 <html>
     <block name="NavBar" style="light"/>
@@ -83,23 +81,43 @@ clearly unsuitable to send to a visitor's web browser without having been passed
 </html>
 ```
 
-This example makes use of four Modules. These modules are instantiated using the `<html>`, `<block>`, `<news>` and `<footer>` elements. The `<html>` element invokes a module that adds the completed `<head>` element. The `<block>` element is replaced by a fully built HTML5 navigation bar. The `<h1>` element is part of the static page content; itt remains uninitiated and unaltered. The `<news>` element pulls up to 20 news stories from a database and display them with a `<div>` containing thumbnails and a headline. The `<footer>` section is automatically populated with a copyright notice. 
+### Arguments Elements
+Storing arguments in element attributes has its limits, as too much content can decrease readability. To accommodate for this limitation. arguments can be added as a children of the element using the `arg` element. 
 
-### Parsing
+#### Example
+In the following example, `block` features an argument named `min` set to a value of 0 and an argument `limit` set to a value of 1. 
+
+```lhtml5
+<block name="Test">
+    <arg name="min">0</arg>
+    <arg name="limit">1</arg>
+</block>
+```
+
+### Dialect
+Thoughtfully design any custom elements and attributes as they alter the languages dialect. The very use of custom markup elements and attributes alters and shapes the project's LHTML5 language dialect. A decisive factor in a project dialect's success (and thus the project's success) is its effectiveness communicate a message between its stakeholders. A dialect's design is RECOMMENDED to carry a message that allows project stakeholders to effectively communicate. These stakeholders MAY include any of the following:
+
++ Backend developer;
++ Template designers;
++ Frontend developers;
++ UX/UI designers;
++ WYSIWYG users.
+
+### Interpreter Standards
+
+
 #### Builders
 The same LHTML5 document may be built different ways depending on the specified builder. 
 
+A builder may decide not to parse modules. 
+
++ Search indexes;
++ the Web browser.
+
 #### Configuration
+A valid configuration must be capable of removing all unpermited HTML5 attributes.
 
 #### Construction
-The parser's config SHOULD be responsible for determining which modules to instantiate. This config MUST 
-describe each module using the following fields:
-
-| Field | Summary |
-| --- | ---| 
-| `name` | Machine readable identifier for the module. |
-| `xpath` | Find elements within the document using an XPath expression. |
-| `class_name` | Determines what class to instantiate the module as. Maybe either a custom element or a native HTML5 element. |
 
 #### Modules
 LHTML5 is a modular language for emergent purposes. Modules are the worker bees of LHTML. Potential uses of LHTML5 modules include, but are not limited to:
@@ -113,6 +131,17 @@ LHTML5 is a modular language for emergent purposes. Modules are the worker bees 
 + enable the use of dynamic content (such as variables);
 + custom elements that are used to instantiate modules; and
 + others.
+
+
+The parser's config SHOULD be responsible for determining which modules to instantiate. This config MUST 
+describe each module using the following fields:
+
+| Field | Summary |
+| --- | ---| 
+| `name` | Machine readable identifier for the module. |
+| `xpath` | Find elements within the document using an XPath expression. |
+| `class_name` | Determines what class to instantiate the module as. Maybe either a custom element or a native HTML5 element. |
+
 
  
 ##### XPath Expression 
