@@ -5,7 +5,7 @@
 March 2020 Edition
 
 ## Introduction
-Living Hypertext Markup Language 5 (LHTML5) builds dynamic HTML5 documents. The spec has two parts: a document language and an interrupter standard. 
+Living Hypertext Markup Language 5 (LHTML5) extends HTML5 to allow building of dynamic documents. The spec has two parts: a document language and an interrupter standard. 
 
 The document language defines the standard for a LHTML5 document (referred to as a "document"). Its syntax is similar HTML5 but permits additional custom elements and attributes. Unlike HTML5, which describes content for the web browser, LHMTL5 allows internal stakeholders to create parsable blueprints that produce dynamic pages.
 
@@ -39,8 +39,21 @@ A conforming implementation of LHTML5 must fulfill all normative requirements. C
 
 The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY ", and "OPTIONAL" will be used as defined in [RFC2119](https://www.ietf.org/rfc/rfc2119.txt). When used with the normative RFC2119 meanings, they will be all uppercase. Occurrences of these words in lowercase comprise normal prose usage, with no normative implications.
 
+## Preamble
+
+Modern web developers know an HTML5 file is not enough to provide modern dynamic markup. It must be amended with a templating language then processed by a  templating processor to combine it with the data model to produce dynamic markup.  
+
+We can better understand the reason why HTML5 requires an embedded templating language if go back to 1986. For that is the year SGML (Standard Generalized Markup Language) was accepted. HTML5 stems from SGML. And SGML has is based on two postulates:
++ Declarative: Markup should describe a document's structure and other attributes rather than specify the processing that needs to be performed, because it is less likely to conflict with future developments.
++ Rigorous: In order to allow markup to take advantage of the techniques available for processing rigorously defined objects like programs and databases.
+https://en.wikipedia.org/wiki/Standard_Generalized_Markup_Language
+
+The LHTML5 standard questions the first axiom and extends it as follows:
++ Declarative: Markup should describe a document's structure and other attributes. It may provide simple instructions to the processor that it must  removed and may replace with rendered content. It may not perform processing because of separation of concerns.
+
 ## Document Language
 The document contents are the blueprints for a dynamic web page. They allow internal stakeholders to communicate the design of a page. The document SHOULD adhere to the [HTML5 spec](https://html.spec.whatwg.org/multipage/), which details how modern markup documents are delivered to the browser, with limited exceptions. It MUST consist of tree elements that contain attributes. 
+
 
 ## Exceptions
 Document exceptions from the HTML5 standard are optional and include the presence of custom attributes, custom elements, and argument elements. These exceptions serve as instructions for the parser. Builders generally replace these with rendered dynamic content that is not stored within the document.
