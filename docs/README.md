@@ -49,7 +49,7 @@ We can better understand the reason why HTML5 requires an embedded templating la
 https://en.wikipedia.org/wiki/Standard_Generalized_Markup_Language
 
 The LHTML5 standard questions the first axiom and extends it as follows:
-+ Declarative: Markup should describe a document's structure and other attributes. It may provide simple instructions to the processor that it must  removed and may replace with rendered content. It may not perform processing because of separation of concerns.
++ Declarative: Markup should describe a document's structure and other attributes. It may provide simple instructions to the processor that it must  remove and may replace with rendered content. It may not perform processing because of separation of concerns.
 
 ## Document Language
 The document contents are the blueprints for a dynamic web page. They allow internal stakeholders to communicate the design of a page. The document SHOULD adhere to the [HTML5 spec](https://html.spec.whatwg.org/multipage/), which details how modern markup documents are delivered to the browser, with limited exceptions. It MUST consist of tree elements that contain attributes. 
