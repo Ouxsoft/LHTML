@@ -5,11 +5,11 @@
 March 2020 Edition
 
 ## Introduction
-Living Hypertext Markup Language 5 ("LHTML5", "Living HTML5") extends HTML5 to allow building of dynamic documents. The spec has two parts: a document language and an interrupter standard. 
+Living Hypertext Markup Language 5 (also known as Living HTML5 or LHTML5) describe a means for building dynamic HTML5 documents. The spec is consists of two parts distinct parts: a document language and an processor standard. 
 
 The document language defines the standard for a LHTML5 document (referred to as a "document"). Its syntax is similar HTML5 but permits additional custom elements and attributes. Unlike HTML5, which describes content for the web browser, LHMTL5 allows internal stakeholders to create parsable blueprints that produce dynamic pages.
 
-The interrupter standard defines how the document language is built. A document is past into program (referred to as "parser") that build a HTML5 page. It focuses primarily on how configured elements and attributes serve as instructions to instantiate modules, perform coordinated logical functions, and replace themselves with rendered content. 
+The processor standard defines how the document language is built. A document is past into program (referred to as "parser") that build a HTML5 page. It focuses primarily on how configured elements and attributes serve as instructions to instantiate modules, perform coordinated logical functions, and replace themselves with rendered content. 
 
 Anyone familiar with HTML5 should find LHTML5 a breeze. Let's dive right in! 
 
@@ -41,7 +41,7 @@ The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "S
 
 ## Preamble
 
-Modern web developers know an HTML5 file is not enough to provide modern dynamic markup. It must be amended with a templating language then processed by a  templating processor to combine it with the data model to produce dynamic markup.  
+Modern web developers know an HTML5 file is not enough to provide modern dynamic markup. It must be amended with a templating language then processed by a templating processor to combine it with the data model to produce dynamic markup.  
 
 We can better understand the reason why HTML5 requires an embedded templating language if go back to 1986. For that is the year SGML (Standard Generalized Markup Language) was accepted. HTML5 stems from SGML. And SGML was based on just two postulates (or assumptions):
 + Declarative: Markup should describe a document's structure and other attributes rather than specify the processing that needs to be performed, because it is less likely to conflict with future developments.
@@ -52,12 +52,20 @@ The LHTML5 standard questions the first axiom and extends it as follows:
 + Declarative: Markup should describe a document's structure and other attributes. It may provide simple instructions to the processor that it must  remove and may replace with rendered content. It may not perform processing because of separation of concerns.
 
 ## Document Language
-The document contents are the blueprints for a dynamic web page. They allow internal stakeholders to communicate the design of a page. The document SHOULD adhere to the [HTML5 spec](https://html.spec.whatwg.org/multipage/), which details how modern markup documents are delivered to the browser, with limited exceptions. It MUST consist of tree elements that contain attributes. 
+The document MUST consist of tree elements that contain attributes. It is RECOMMENDED that it be well-formatted markup. It is RECOMMENDED that the document feature a root element (i.e. `<html>`). It is RECOMMEND that all tags that are opened be closed. 
 
+All of the markup contained within the document MUST adhere to either the static markup or the dynamic markup standards.
 
-## Exceptions
-Document exceptions from the HTML5 standard are optional and include the presence of custom attributes, custom elements, and argument elements. These exceptions serve as instructions for the parser. Builders generally replace these with rendered dynamic content that is not stored within the document.
+### Static Markup
+The document may contain static markup. Static markup is markup that the processor MUST not alter it. Static markup MUST adhere to the [HTML5 spec](https://html.spec.whatwg.org/multipage/), which details how modern markup documents are delivered to the browser. Static markup is most often page specific markup that does not make sense to manage in other places. The paragraph text of a page is a good example of content that is often makes sense to leave as static. 
 
+### Dynamic Markup
+Dynamic markup is the powerhouse of the document. Dynamic markup is markup that the processor MUST be able to alter during runtime. This type of markup, which serve as instructions for the processor, is entirely optional. It include the presence of custom attributes, custom elements, and argument elements that may or may not be defined in the HTML5 spec. 
+
+These tags and attributes act as the blueprints for dynamic content. The tags serve as placeholders for that dynamic content and once processed will be replaced with valid HTML5.The document may make use of any tags as dynamic markup. Even pre-exist HTML5 tags can be enhanced or transformed. For example, with LHTML5 for accessibility compliance, the alt attribute could be set to decorator when missing from `img` elements. 
+
+The processor's builders generally replace dynamic elements with rendered dynamic content that was not previously within the element.
+ 
 ### Custom Attributes
 The document language permits the use of custom element attributes, which are not defined in the HTML5 spec. 
 
@@ -75,7 +83,7 @@ The following example show an invalid HTML5 attribute, "type", within the `<head
 ```
 
 ### Custom Elements
-LHTML5 modules allow for the language to also make use of custom elements that are not defined in the HTML5 spec. When an LHTML5 document is build for site visitor it SHOULD adhere to HTML5 standards without exception. 
+LHTML5 design encourages the creation of custom elements over building a processing tree consisting of large nested logical elements that are difficult to maintain. The document allow for the use of custom elements that are not defined in the HTML5 spec. 
 
 #### Example
 The following shows an example of an unparsed document containing a few custom elements. This document would not be suitable to send to a site visitor's web browser without having been pass through to a parser.
@@ -95,7 +103,7 @@ This example makes use of four Modules. These modules are instantiated using the
 ```
 
 ### Arguments Elements
-Storing arguments in element attributes has its limits, as too much content can decrease readability. To accommodate for this limitation. arguments can be added as a children of the element using the `arg` element. 
+A dynamic element's attributes and child `<arg/>` MUST be picked up as arguments by the processor. Storing arguments in element attributes has its limits, as too much content can decrease readability. To accommodate for this limitation. arguments can be added as a children of the element using the `arg` element. 
 
 #### Example
 In the following example, `block` features an argument named `min` set to a value of 0 and an argument `limit` set to a value of 1. 
@@ -116,8 +124,10 @@ The presence of custom elements and attributes in turn alters and shapes the pro
 + UX/UI designers;
 + WYSIWYG users.
 
-### Interpreter Standards
+The present of these elements allows internal stakeholders to communicate design. Elements and arguments can be passed from front end developers to backend end developers 
 
+### Processor Standards
+When an LHTML5 document is build for site visitor it SHOULD adhere to HTML5 standards without exception. 
 
 #### Builders
 The same LHTML5 document may be built different ways depending on the specified builder. 
@@ -146,7 +156,7 @@ LHTML5 is a modular language for emergent purposes. Modules are the worker bees 
 + others.
 
 
-The parser's config SHOULD be responsible for determining which modules to instantiate. This config MUST 
+The processor's config SHOULD be responsible for determining which modules to instantiate. This config MUST 
 describe each module using the following fields:
 
 | Field | Summary |
@@ -158,7 +168,7 @@ describe each module using the following fields:
 
  
 ##### XPath Expression 
-A Module is instantiated as object when elements are found within the document using XPath expressions. Only Modules defined in the parser config that are found within the document are turned to objects. 
+A Module is instantiated as object when elements are found within the document using XPath expressions. Only Modules defined in the processor config that are found within the document are turned to objects. 
 
 | Type | Example | Description |
 | --- | --- | --- |
@@ -173,12 +183,12 @@ The type
 
 The Module's `class_name` may use the element's attributes as variables to resolve the class. Depending on the config, the following may show an example of a module that is instantiated the either the class `Modules/Block/Test` or `Modules/Block`.
 
-Classes not found should be marked with one of the following error handlers
-<~-- NOT FOUND -->
-<~-- NOT FOUND -->
+Depending on the configuration classes not found MAY be marked with one of the following error handlers
+`<!-- NOT FOUND -->`
+`<!-- NOT FOUND -->`
 
 ## `args`
-During runtime the parser takes specified elements and instantiates them as objects. The element can feature arguments that are passed to the Module as properties. An argument's purpose is to be passed as a parameter, used by a module's method.
+During runtime the processor takes specified elements and instantiates them as objects. The element can feature arguments that are passed to the Module as properties. An argument's purpose is to be passed as a parameter, used by a module's method.
 
 ### Arguments from Derived Attribute 
 Arguments can be added as attributes within an element. The following is an example of an argument `limit` being set to 1.
@@ -214,31 +224,25 @@ Modules can be nested inside one another. The following shows an example of a `v
 ```
 
 #### Module Ancestor Properties
-+ Modules can access their own private variables. 
-+ Modules can access their ancestors public variables.
+All Modules MUST be able to access their own private variables. In addition, all Modules can access their ancestors element's public variables. 
+
+##### Example
 
 ```HTML
- <div id="1">
- 	<div id="2">
- 		<div id="3"/>
- 	</div>
- 	<div id="4">
- 		<div id="5"/>
- 	</div>
- </div>
+ <block name="ModuleA">
+ 	<block name="ModuleB">
+ 		<block name="ModuleC"/>
+ 	</block>
+ 	<block name="ModuleD">
+ 		<block name="ModuleE">
+ 	</block>
+ </block>
 ```
-If `div` were a module in the above example, the following would be true:
-* Module with id #1 can access no other Module public properties. 
-* Module with id #2 can access module #1 public properties.
-* Module with id #3 can access modules #1 and #2 public properties.
-* Module with id #4 can access module #1 public properties.
-* Module with id #5 can access modules #4 and #1 public properties.
+* ModuleA can access no other modules public properties. 
+* ModuleB can access ModuleA's public properties.
+* ModuleC can access ModuleA's and ModuleB's public properties.
+* ModuleD can access ModuleA's public properties.
+* ModuleE can access ModuleA's and ModuleD's public properties.
 
 ## Module Methods
 The config defines method calls to be orchestrated against all the modules instantiated. The methods can differ project to project but it stands to reason that one of the last ones will render the output from the module and its content will replace the original element entirely.
-
-## Well-Formatted
-LHTML5 is a well-formatted markup scripting language. It is RECOMMEND to close tags that are opened. 
-
-## Customizable Tags
-In LHTML5 any tag can be used. And pre-exist HTML5 tags can be enhanced or transformed. For example, with LHTML5 for accessibility compliance, the alt attribute could be set to decorator when missing from img elements. LHTML5 discourages large nested logical elements that can be hard to read. The design encourages the creation of Module rather than building a 10 layer deep statement of conditions. 
