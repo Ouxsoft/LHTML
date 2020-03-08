@@ -56,7 +56,7 @@ The document MUST consist of tree elements that contain attributes. It is RECOMM
 All of the markup contained within the document MUST adhere to either the static markup or the dynamic markup standards.
 
 ### Static Markup
-The document may contain static markup. Static markup is markup that the processor MUST not alter it. Static markup MUST adhere to the [HTML5 spec](https://html.spec.whatwg.org/multipage/), which details how modern markup documents are delivered to the browser. Static markup is most often page specific markup that does not make sense to manage in other places. The paragraph text of a page is a good example of content that is often makes sense to leave as static. 
+The document may contain static markup. Static markup is markup that the processor does not receive instructions from. Static markup MUST adhere to the [HTML5 spec](https://html.spec.whatwg.org/multipage/), which details how modern markup documents are delivered to the browser. Static markup is most often page specific markup that makes sense to manage within the document. The paragraph text of a page is a good example of content that often makes sense to remain as static markup. 
 
 ### Dynamic Markup
 Dynamic markup is the powerhouse of the document. Dynamic markup is markup that the processor MUST be able to alter during runtime. This type of markup, which serve as instructions for the processor, is entirely optional. It include the presence of custom attributes, custom elements, and argument elements that may or may not be defined in the HTML5 spec. 
