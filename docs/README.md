@@ -82,7 +82,7 @@ The following example show an invalid HTML5 attribute, "type", within the `<head
 ```
 
 ### Custom Elements
-LHTML5 design encourages the creation of custom elements over building a processing tree consisting of large nested logical elements that are difficult to maintain. The document allow for the use of custom elements that are not defined in the HTML5 spec. 
+LHTML5 design encourages the creation of custom elements over building a processing tree consisting of large nested logical elements that are difficult to maintain. The document allows for the use of custom elements that are not defined in the HTML5 spec. 
 
 #### Example
 The following shows an example of an unparsed document containing a few custom elements. This document would not be suitable to send to a site visitor's web browser without having been pass through to a parser.
