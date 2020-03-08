@@ -101,11 +101,30 @@ This example makes use of four Modules. These modules are instantiated using the
 </html>
 ```
 
-### Arguments Elements
-A dynamic element's attributes and child `<arg/>` MUST be picked up as arguments by the processor. Storing arguments in element attributes has its limits, as too much content can decrease readability. To accommodate for this limitation. arguments can be added as a children of the element using the `arg` element. 
+### Arguments 
+An argument is a value that is sent to the Module when it is called.
+
+#### Argument Attributes
+The processor MUST pass a dynamic elements attributes as  arguments. Storing and pass arguments as element attributes has its limits, as too much content can decrease readability. 
 
 #### Example
-In the following example, `block` features an argument named `min` set to a value of 0 and an argument `limit` set to a value of 1. 
+In the following example, `block` features three arguments:
++ `name` set to the value "Test"; 
++ `min` set to a value of 0; and 
++ `limit` set to a value of 1. 
+
+```lhtml5
+<block name="Test" min="0" limit="1"/>
+```
+
+#### Argument Elements
+Arguments can be added as a children of the element using the `<arg/>` element. When using this method the `<arg>` name attribute specifies the argument's name and the inner contents specify the value.
+
+#### Example
+In the following example, `block` features three arguments:
++ `name` set to the value "Test"; 
++ `min` set to a value of 0; and 
++ `limit` set to a value of 1. 
 
 ```lhtml5
 <block name="Test">
@@ -113,6 +132,20 @@ In the following example, `block` features an argument named `min` set to a valu
     <arg name="limit">1</arg>
 </block>
 ```
+
+#### Argument Type Definition
+A processor implementation may be written in a language that makes use of strict types. It is RECOMMENDED to define these data types within the `<arg>` element's "type" attribute. The various types options available are not defined within this standard because they may vary depending on the language. 
+ 
+##### Example
+
+```lhtml5
+<block name="Test">
+    <arg name="id" type="int">0</arg>
+    <arg name="msg" type="string">Hello</arg>
+    <arg name="metadata" type="json">{"content":"50"}</arg>
+</block>
+```
+
 
 ### Dialect
 The presence of custom elements and attributes in turn alters and shapes the project's dialect. That is why it is important to thoughtfully design these language changes. A decisive factor in success of a dialect (and thus the project's success) is its effectiveness to serve as a message to communicate between its stakeholders. A dialect's design is RECOMMENDED to carry a message that allows project stakeholders to effectively communicate. These stakeholders MAY include any of the following:
