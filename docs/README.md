@@ -7,10 +7,9 @@ March 2020 Edition
 ## Introduction
 LHTML5 (Living HTML5) is a standard for describing dynamic HTML5. It exists to help empower web developers as a team encourage and effective communication. LHTML5 provides a structured standardization for both a document language and processing standard. 
 
-The document language section defines the standard for a LHTML5 document (referred to as a "document"). Its syntax is similar HTML5 but permits additional custom elements and attributes. Unlike HTML5, which describes content for the web browser, LHMTL5 allows internal stakeholders to create parsable blueprints that produce dynamic pages.
+The document language section defines the standard for a LHTML5 document (referred to as a "document"). Its syntax is similar to HTML5 but permits additional custom elements and attributes that are used to inform the processor. Unlike HTML5, which describes content for the web browser, LHMTL5 allows internal stakeholders to add instructions that produce dynamic pages.
 
-The processor standard section defines how the document language is used to build web pages. A document is past into program (referred to as "parser") that build a HTML5 page. It focuses primarily on how configured elements and attributes serve as instructions to instantiate modules, perform coordinated logical functions, and replace themselves with rendered content. 
-The processor standard section defines how the document language is used to build web pages. A document is past into program (referred to as "parser") that build a HTML5 page. It focuses primarily on how configured elements and attributes serve as instructions to instantiate modules, perform coordinated logical functions, and replace themselves with rendered content. 
+The processor standard section defines how the document language is used to build web pages. A document is past into program (referred to as "processor", "interpreter", or "parser") that builds a HTML5 page. It focuses primarily on how configured elements and attributes serve as instructions to instantiate modules, perform coordinated logical functions, and replace themselves with rendered content. 
 
 Anyone familiar with HTML5 should find LHTML5 a breeze. Let's dive right in! 
 
