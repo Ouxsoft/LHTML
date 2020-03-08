@@ -5,7 +5,7 @@
 March 2020 Edition
 
 ## Introduction
-LHTML5 (Living HTML5) is a standard for describing dynamic HTML5. It exists to help empower web developers encourage effective communication. LHTML5 provides a structured standardization for both a document language and processing standard. 
+LHTML5 (Living HTML5) is a standard for describing dynamic HTML5. It exists to help empower web developers as a team encourage and effective communication. LHTML5 provides a structured standardization for both a document language and processing standard. 
 
 The document language section defines the standard for a LHTML5 document (referred to as a "document"). Its syntax is similar HTML5 but permits additional custom elements and attributes. Unlike HTML5, which describes content for the web browser, LHMTL5 allows internal stakeholders to create parsable blueprints that produce dynamic pages.
 
