@@ -10,6 +10,7 @@ LHTML5 (Living HTML5) is a standard for describing dynamic HTML5. It exists to h
 The document language section defines the standard for a LHTML5 document (referred to as a "document"). Its syntax is similar HTML5 but permits additional custom elements and attributes. Unlike HTML5, which describes content for the web browser, LHMTL5 allows internal stakeholders to create parsable blueprints that produce dynamic pages.
 
 The processor standard section defines how the document language is used to build web pages. A document is past into program (referred to as "parser") that build a HTML5 page. It focuses primarily on how configured elements and attributes serve as instructions to instantiate modules, perform coordinated logical functions, and replace themselves with rendered content. 
+The processor standard section defines how the document language is used to build web pages. A document is past into program (referred to as "parser") that build a HTML5 page. It focuses primarily on how configured elements and attributes serve as instructions to instantiate modules, perform coordinated logical functions, and replace themselves with rendered content. 
 
 Anyone familiar with HTML5 should find LHTML5 a breeze. Let's dive right in! 
 
@@ -48,7 +49,7 @@ The reason an embedded templating language is commonly used to create dynamic ma
 + Rigorous: In order to allow markup to take advantage of the techniques available for processing rigorously defined objects like programs and databases ([reference](https://en.wikipedia.org/wiki/Standard_Generalized_Markup_Language)).
 
 The LHTML5 standard questions the first axiom and extends it as follows:
-+ Declarative: Markup should describe a document's structure and other attributes. It may provide simple instructions to the processor that it must remove or replace with rendered content. It should avoid perform processing because of separation of concerns.
++ Declarative: Markup SHOULD describe a document's structure and other attributes. It may contain simple instructions for the processor. It does not perform processing, because of separation of concerns, but is processed. The processor decides if and how to interpret these instructions and SHOULD remove or replace them with rendered content.
 
 ## Document Language
 The document MUST consist of tree elements that contain attributes. It is RECOMMENDED that it be well-formatted markup. It is RECOMMENDED that the document feature a root element (i.e. `<html>`). It is RECOMMEND that all tags that are opened be closed. 
