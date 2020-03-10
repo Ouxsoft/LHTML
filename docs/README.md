@@ -5,7 +5,7 @@
 March 2020 Edition
 
 ## Introduction
-LHTML5 (Living HTML5) is a standard for describing dynamic HTML5. It exists to help empower web developers as a team encourage and effective communication. LHTML5 provides a structured standardization for both a document language and processing standard. 
+LHTML5 (Living HTML5) is a standard for describing dynamic HTML5. It exists to help empower web developers as a team encourage and effective communication. LHTML5 contains the standardization for both a document language and processing standard. 
 
 The document language section defines the standard for a LHTML5 document (referred to as a "document"). Its syntax is similar to HTML5 but permits additional custom elements and attributes that are used to inform the processor. Unlike HTML5, which describes content for the web browser, LHMTL5 allows internal stakeholders to add instructions that produce dynamic pages.
 
@@ -102,10 +102,10 @@ This example makes use of four Modules. These modules are instantiated using the
 ```
 
 ### Arguments 
-An argument is a value that is sent to the Module when it is called.
+During runtime the processor takes specified elements and instantiates them as objects. The element can feature arguments that are passed to the Module as properties. An argument's purpose is to be passed as a parameter, used by a module's method. 
 
-#### Argument Attributes
-The processor MUST pass a dynamic elements attributes as  arguments. Storing and pass arguments as element attributes has its limits, as too much content can decrease readability. 
+#### Arguments from Derived Attributes
+Arguments can be added as attributes within an element. The processor MUST pass a dynamic elements attributes as arguments. Storing and pass arguments as element attributes has its limits, as too much content can decrease readability. 
 
 #### Example
 In the following example, `block` features three arguments:
@@ -146,6 +146,23 @@ A processor implementation may be written in a language that makes use of strict
 </block>
 ```
 
+### Arguments from Child Arguments
+Using arguments in the form of attributes has its limitations. Arguments can also be added as a children of the element using the `arg` element. In the following example, `block` features an arg named `min` set to a value of 0 and an arg `limit` set to a value of 1. 
+```lhtml5
+<block name="Test">
+    <arg name="min">0</arg>
+    <arg name="limit">1</arg>
+</block>
+```
+#### Passing Array Arguments
+When multiple arguments are passed using the same name it creates an argument array. The following arg `type` contains an array with three values: pickles, ketchup, and mustard.
+```lhtml5
+<block name="Test">
+    <arg name="type">pickles</arg>
+    <arg name="type">ketchup</arg>
+    <arg name="type">mustard</arg>
+</block>
+```
 
 ### Dialect
 The presence of custom elements and attributes in turn alters and shapes the project's dialect. That is why it is important to thoughtfully design these language changes. A decisive factor in success of a dialect (and thus the project's success) is its effectiveness to serve as a message to communicate between its stakeholders. A dialect's design is RECOMMENDED to carry a message that allows project stakeholders to effectively communicate. These stakeholders MAY include any of the following:
@@ -169,13 +186,11 @@ A builder may decide not to parse modules.
 + Search indexes;
 + the Web browser.
 
-#### Configuration
-A valid configuration must be capable of removing all unpermited HTML5 attributes.
-
 #### Construction
+LHTML5 is a modular language for emergent purposes. 
 
 #### Modules
-LHTML5 is a modular language for emergent purposes. Modules are the worker bees of LHTML. Potential uses of LHTML5 modules include, but are not limited to:
+Modules are the worker bees of LHTML5. They do what needs to be done to modify the document. They receive instruction from the documents args and the configuration. Potential uses of LHTML5 modules include, but are not limited to:
 
 + reduce architectural debt and clutter of redundant elements present across multiple pages;
 + extend backend features to frontend WYSIWYG users;
@@ -187,6 +202,8 @@ LHTML5 is a modular language for emergent purposes. Modules are the worker bees 
 + custom elements that are used to instantiate modules; and
 + others.
 
+#### Configuration
+A valid configuration must be capable of removing all unpermited HTML5 attributes.
 
 The processor's config SHOULD be responsible for determining which modules to instantiate. This config MUST 
 describe each module using the following fields:
@@ -195,9 +212,7 @@ describe each module using the following fields:
 | --- | ---| 
 | `name` | Machine readable identifier for the module. |
 | `xpath` | Find elements within the document using an XPath expression. |
-| `class_name` | Determines what class to instantiate the module as. Maybe either a custom element or a native HTML5 element. |
-
-
+| `class_name` | Determines what class to instantiate the module as. |
  
 ##### XPath Expression 
 A Module is instantiated as object when elements are found within the document using XPath expressions. Only Modules defined in the processor config that are found within the document are turned to objects. 
@@ -219,32 +234,6 @@ Depending on the configuration classes not found MAY be marked with one of the f
 `<!-- NOT FOUND -->`
 `<!-- NOT FOUND -->`
 
-## `args`
-During runtime the processor takes specified elements and instantiates them as objects. The element can feature arguments that are passed to the Module as properties. An argument's purpose is to be passed as a parameter, used by a module's method.
-
-### Arguments from Derived Attribute 
-Arguments can be added as attributes within an element. The following is an example of an argument `limit` being set to 1.
-```lhtml5
-<block name="Test" limit="1"/>
-```
-
-### Arguments from Child Arguments
-Using arguments in the form of attributes has its limitations. Arguments can also be added as a children of the element using the `arg` element. In the following example, `block` features an arg named `min` set to a value of 0 and an arg `limit` set to a value of 1. 
-```lhtml5
-<block name="Test">
-    <arg name="min">0</arg>
-    <arg name="limit">1</arg>
-</block>
-```
-### Array Arguments
-When multiple arguments are passed using the same name it creates an argument array. The following arg `type` contains an array with three values: pickles, ketchup, and mustard.
-```lhtml5
-<block name="Test">
-    <arg name="type">pickles</arg>
-    <arg name="type">ketchup</arg>
-    <arg name="type">mustard</arg>
-</block>
-```
 
 ## Modules
 ### Nested Modules
