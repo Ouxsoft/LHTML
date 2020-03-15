@@ -348,6 +348,16 @@ Reverse - Recursive reverse iterate.
 ## Implementations
 + [LivingMarkup](https://github.com/hxtree/LivingMarkup) a PHP Implementation
 
+## Reporting issues
+
+Please report issue and open new tickets:
+
++ [Report Issues](https://github.com/hxtree/lhtml5/issues)
+
+## Contributing
+
+To contribute sign into your Github account, navigate to the [README.md](https://github.com/hxtree/lhtml5/blob/master/README.md), click the [edit button](https://github.com/hxtree/lhtml5/edit/master/README.md), and commit your changes.
+
 ## Acknowledgments
 
 Thanks to Kseniya Gorbunova for their useful comments that have led to changes to this specification.
