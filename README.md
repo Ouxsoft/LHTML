@@ -309,4 +309,45 @@ All Modules MUST be able to access their own private variables. In addition, all
 * ModuleE can access ModuleA's and ModuleD's public properties.
 
 ##### Module Methods
-The config defines method calls to be orchestrated against all the modules instantiated. The methods can differ project to project but it stands to reason that one of the last ones will render the output from the module and its content will replace the original element entirely. 
+The config defines method calls to be orchestrated against all the modules instantiated. These methods MAY differ project to project. It stands to reason that one of the last methods called will be to render the Module's output and its content will replace the original element entirely. 
+
+Method calls to instantiated objects MAY occur in either forward or reverse order depending on the orchestration needs. 
+
+###### Example
+The following examples demonstrate the two different orders in which Module methods can be executed, forward and reverse. In this example, the order of module method calls are indicated by process_id attribute.
+
+Forward - Recursive iterate forward. 
+```lhtml5
+<block process_id="1">
+	<block process_id="2">
+		<block process_id="3"/>
+	</block>
+	<block process_id="4">
+		<block process_id="5"/>
+		<b>Test</b>
+	</block>
+	<a href="#test">Test</a>
+</block>
+
+```
+
+Reverse - Recursive reverse iterate. 
+```lhtml5
+<block process_id="5">
+	<block process_id="4">
+		<block process_id="3"/>
+	</block>
+	<block process_id="2">
+		<block process_id="1"/>
+		<b>Test</b>
+	</block>
+	<a href="#test">Test</a>
+</block>
+```
+
+## Implementations
++ [LivingMarkup](https://github.com/hxtree/lhtml5) a PHP Implementation
+
+## Acknowledgments
+
+Thanks to Kseniya Gorbunova for their useful comments that have led to changes to this specification.
