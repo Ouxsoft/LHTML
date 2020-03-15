@@ -1,7 +1,5 @@
 # LHTML5 Spec
 
-[![Documentation Status](https://readthedocs.org/projects/lhtml5/badge/?version=latest)](https://lhtml5.readthedocs.io/en/latest/?badge=latest)
-
 March 2020 Edition
 
 ## Introduction
