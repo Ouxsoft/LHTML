@@ -238,7 +238,7 @@ The processor's config SHOULD be responsible for determining how to instantiate 
 | `xpath` | Find elements within the document using an XPath expression. |
 | `class_name` | Determines what class to instantiate the module as. |
  
-##### XPath Expression 
+##### `xpath:`
 The xpath withing the config is used to find elements to instantiate as Module. Only Modules defined in the processor config that are also found within the document should be instantiated.  
 
 | Type | Example | Description |
@@ -248,7 +248,7 @@ The xpath withing the config is used to find elements to instantiate as Module. 
 
 The processor should ignore any elements not found using an xpath from the config. These elements SHOULD not bt instantiated and SHOULD remain unaltered. 
 
-##### Class Name
+##### `class_name:`
 The same element can be instantiated different ways. During parsing, a module's `class_name` determines what class the module is instantiated as. The Module's `class_name` may use the element's attributes as variables to resolve the class.
 
 Depending on the configuration, if a the process cannot find a classes it MAY replace the elment with a HTML5 comment indicating an error has occurred. 
