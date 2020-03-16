@@ -180,10 +180,10 @@ The same LHTML5 document may be built different ways depending on the specified 
 When an LHTML5 document is build for site visitor it SHOULD adhere to HTML5 standards without exception. 
 
 #### Configuration
-The configuration contain the project's settings that are passed to the builder. The configurations come from a config, which is often a standalone file. 
+The configuration contain the project's settings that are passed to the one of the processor's builder. The configurations are stored in a config, which is often a standalone file. 
 
 #### Example
-
+The following example demonstrates one potential YAML config.
 ```yaml
 modules:
   types:
@@ -265,7 +265,7 @@ The config determines the class that a module is instantiated as. A config with 
 | "TestElement" | `TestElement` |
 
 #### Modules
-Modules are the worker bees of LHTML5. They are objects that do what needs to be done to modify the document. They receive instruction from the documents args and the configuration. Potential uses of LHTML5 modules include, but are not limited to:
+Modules are the worker bees of LHTML5. They are objects that complete logic to modify the document. They receive instruction from the documents args and the configuration. Potential uses of LHTML5 modules include, but are not limited to:
 
 + reduce architectural debt and clutter of redundant elements present across multiple pages;
 + extend backend features to frontend WYSIWYG users;
@@ -291,6 +291,12 @@ The following shows an example of a `var` (short for variable) module nested ins
 All Modules MUST be able to access their own private variables. In addition, all Modules can access their ancestors element's public variables. 
 
 ##### Example
+The following example demonstrates module's ability to access their ancestor elements.
+* ModuleA can access no other modules public properties. 
+* ModuleB can access ModuleA's public properties.
+* ModuleC can access ModuleA's and ModuleB's public properties.
+* ModuleD can access ModuleA's public properties.
+* ModuleE can access ModuleA's and ModuleD's public properties.
 
 ```HTML
  <block name="ModuleA">
@@ -302,11 +308,6 @@ All Modules MUST be able to access their own private variables. In addition, all
  	</block>
  </block>
 ```
-* ModuleA can access no other modules public properties. 
-* ModuleB can access ModuleA's public properties.
-* ModuleC can access ModuleA's and ModuleB's public properties.
-* ModuleD can access ModuleA's public properties.
-* ModuleE can access ModuleA's and ModuleD's public properties.
 
 ##### Module Methods
 The config defines method calls to be orchestrated against all the modules instantiated. These methods MAY differ project to project. It stands to reason that one of the last methods called will be to render the Module's output and its content will replace the original element entirely. 
@@ -314,7 +315,7 @@ The config defines method calls to be orchestrated against all the modules insta
 Method calls to instantiated objects MAY occur in either forward or reverse order depending on the orchestration needs. 
 
 ###### Example
-The following examples demonstrate the two different orders in which Module methods can be executed, forward and reverse. In this example, the order of module method calls are indicated by process_id attribute.
+The following examples demonstrate the two different orders, forward and reverse, in which Module methods can be called. The processor SHOULD make render calls (e.g. onRender) in reverse. In this example, the order of module method calls are indicated by process_id attribute.
 
 Forward - Recursive iterate forward. 
 ```lhtml5
