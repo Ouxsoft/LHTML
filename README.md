@@ -245,7 +245,7 @@ The xpath within the config is used to find elements to instantiate as Module. O
 | Native | `<head/>`  | A native module is instantiated using an preexisting HTML5 element. This is often the case when the element exist within the page but needs to be corrected or auto completed during parsing. | 
 | Custom | `<block/>` | A custom module is instantiated using a element not defined within the HTML5 spec. This is useful for namespacing custom elements that WYSIWYG users can drop into a page or when defining new content types. It's also a way of adding a term to communicate a feature to internal web stakeholders. |
 
-The processor should ignore any elements not found using an xpath from the config. These elements SHOULD not bt instantiated and SHOULD remain unaltered. 
+The processor should ignore any elements not found using an xpath from the config. These elements SHOULD not be instantiated and SHOULD remain unaltered. 
 
 ##### `class_name:`
 The same element can be instantiated different ways. During parsing, a module's `class_name` determines what class the module is instantiated as. The Module's `class_name` may use the element's attributes as variables to resolve the class.
