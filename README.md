@@ -3,7 +3,7 @@
 March 2020 Edition
 
 ## Introduction
-Living HTML5 (LHTML5) turns markup into objects that perform logic and collaborate to make even better markup.
+***Living HTML5 (LHTML5) turns markup into objects that collaborate to make even better markup.***
 
 Anyone familiar with HTML5 should find LHTML5 a breeze. Let's dive right in! 
 
@@ -44,14 +44,14 @@ The root cause appears to originate from a language, which in many ways HTML5 st
 The LHTML5 standard questions the first axiom and prefers to use the following:
 + Declarative: Markup SHOULD describe a document's structure and other attributes. It does not perform processing, because of separation of concerns, but is processed. It may contain simple instructions for the processor. The processor decides if and how to interpret these instructions and whether to remove or replace with rendered content.
 
-The LHTML5 standard contains both the document language and processing standards. The document language defines the standard for a LHTML5 document (referred to as a "document"). Its syntax is similar to HTML5 but permits additional custom elements and attributes that are used to inform the processor. Unlike HTML5, which describes content for the web browser, LHMTL5 allows internal stakeholders to add instructions that generates dynamic pages. The processor defines how to use the document language to build dynamic HTML5. A document is past into a processor (also referred to as "program", "interpreter", "parser", etc.) that is responsible for building the HTML5. This standard focuses primarily on how configured elements and attributes serve as instructions to instantiate modules, perform coordinated logical functions, and replace themselves with rendered content. 
-
 ## Purpose
 LHTML5 exists to help empower web development teams and encourage effective communication. When fully impletmented it allows complex features to be extended to non tech savvy indivudals.   
 
 It can aid in one time markup conversions including CSS framework upgrades.
 
 ## Document Language
+The LHTML5 standard contains both the document language and processing standards. The document language defines the standard for a LHTML5 document (referred to as a "document"). Its syntax is similar to HTML5 but permits additional custom elements and attributes that are used to inform the processor. Unlike HTML5, which describes content for the web browser, LHMTL5 allows internal stakeholders to add instructions that generates dynamic pages. The processor defines how to use the document language to build dynamic HTML5. A document is past into a processor (also referred to as "program", "interpreter", "parser", etc.) that is responsible for building the HTML5. This standard focuses primarily on how configured elements and attributes serve as instructions to instantiate modules, perform coordinated logical functions, and replace themselves with rendered content. 
+
 The document MUST consist of tree elements that contain attributes. It is RECOMMENDED that it be well-formatted markup. It is RECOMMENDED that the document feature a root element (i.e. `<html>`). It is RECOMMEND that all tags that are opened be closed. 
 
 All of the markup contained within the document MUST adhere to either the static markup or the dynamic markup standards.
