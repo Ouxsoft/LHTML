@@ -35,9 +35,9 @@ The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "S
 
 ## Preamble
 
-The HTML5 standard is not a dynamic markup standard. It cannot generate dynamic HTML5 by itself. Therefore, engineers commonly embed within the HTML5 document a templating language that is ignorant of the HTML5. This language must be processed by a templating engine, which searches for its own syntax and then combines it with the data model. Because the templating language is ignorant of the HTML5, is not particularly well-suite for improvement. 
+The HTML5 standard's purpose is not to create dynamic markup. It seems to exist to solely to organizes information for presentation. It cannot generate dynamic markup by itself. This forces engineers to adapt a templating language. While the templating language must exist inside the HTML5 document it remains ignorant of the HTML5. It must be processed by a templating engine, which searches for its own syntax and then combines it with the data model. Because the templating language is ignorant of the HTML5, is not particularly well-suite for improvement. 
 
-HTML5 appears to exist to solely to organizes information for presentatio. But why did we decide this assumption was best? The root cause appears to originate from a language, which in many ways HTML5 stems from, call SGML (Standard Generalized Markup Language). For in 1986 when this standard was accepted, it was based on two postulates (or assumptions):
+Why did we decide the assumption of this paradigm work best? The root cause appears to originate from a language, which in many ways HTML5 stems from, call SGML (Standard Generalized Markup Language). For in 1986 when this standard was accepted, it was based on two postulates (or assumptions):
 + Declarative: Markup should describe a document's structure and other attributes rather than specify the processing that needs to be performed, because it is less likely to conflict with future developments.
 + Rigorous: In order to allow markup to take advantage of the techniques available for processing rigorously defined objects like programs and databases.
 
