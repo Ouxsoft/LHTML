@@ -238,7 +238,7 @@ The processor's config SHOULD be responsible for determining how to instantiate 
 | `class_name` | Determines what class to instantiate the module as. |
  
 ##### `xpath:`
-The xpath withing the config is used to find elements to instantiate as Module. Only Modules defined in the processor config that are also found within the document should be instantiated.  
+The xpath within the config is used to find elements to instantiate as Module. Only Modules defined in the processor config that are also found within the document should be instantiated.  
 
 | Type | Example | Description |
 | --- | --- | --- |
