@@ -3,7 +3,7 @@
 March 2020 Edition
 
 ## Introduction
-Living HTML5 (LHTML5) turns markup into orchestatable objects that perform logic and collaborate to make even better markup.
+Living HTML5 (LHTML5) turns markup into objects that perform logic and collaborate to make even better markup.
 
 Anyone familiar with HTML5 should find LHTML5 a breeze. Let's dive right in! 
 
