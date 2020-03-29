@@ -3,7 +3,9 @@
 March 2020 Edition
 
 ## Introduction
-Living HTML5 (LHTML5) turns markup into objects that collaborate to make even better markup. Anyone familiar with HTML5 should find LHTML5 a breeze. Let's dive right in! 
+Living HTML5 (LHTML5) turns markup into objects that collaborate to make even better markup. It aims to define an emergent markup language standard to communicate web design.
+
+Anyone familiar with HTML5 should find LHTML5 a breeze. Let's dive right in! 
 
 ### Copyright notice
 Copyright (c) 2017-present Matthew Heroux
@@ -33,14 +35,17 @@ The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "S
 
 ## Preamble
 
-The HTML5 standard's purpose is not to create dynamic markup. It seems to exist to solely to organizes information for presentation. It cannot generate dynamic markup by itself. This forces engineers to adapt a templating language. While the templating language must exist inside the HTML5 document it remains ignorant of the HTML5. It must be processed by a templating engine, which searches for its own syntax and then combines it with the data model. Because the templating language is ignorant of the HTML5, is not particularly well-suite for improvement. 
+HTML5 is inadequate to communicate web design between development teams. 
+It is difficult to maintain and lacks the ability to extend features to empower developers. The standard's purpose seems to exist to solely to organizes static information for presentation. Because it cannot generate dynamic markup by itself, engineers are forced to adapt a templating language that must be processed by a templating engine, which searches for its own syntax and then combines it with the data model.
+
+Although, templating language exist inside the HTML5 document, they remain ignorant of the existing markup. Because the templating language is ignorant of the markup, it is not particularly well-suite for making improvement or ease of maintenance. 
 
 Why did we decide the assumption of this paradigm work best? The root cause appears to originate from a language, which in many ways HTML5 stems from, call SGML (Standard Generalized Markup Language). For in 1986 when this standard was accepted, it was based on two postulates (or assumptions):
 + Declarative: Markup should describe a document's structure and other attributes rather than specify the processing that needs to be performed, because it is less likely to conflict with future developments.
 + Rigorous: In order to allow markup to take advantage of the techniques available for processing rigorously defined objects like programs and databases.
 
 The LHTML5 standard questions the first axiom and prefers to use the following:
-+ Declarative: Markup SHOULD describe a document's structure and other attributes. It does not perform processing, because of separation of concerns, but is processed. It may contain simple instructions for the processor. The processor decides if and how to interpret these instructions and whether to remove or replace with rendered content.
++ Declarative: Markup SHOULD describe a document's structure and other attributes. It does not perform processing, because of separation of concerns. It is however processed and may contain simple instructions for the processor. The processor decides if and how to interpret these instructions and whether to remove or replace them with rendered content.
 
 ## Purpose
 LHTML5 exists to help empower web development teams and encourage effective communication. When fully impletmented it allows complex features to be extended to non tech savvy indivudals.   
