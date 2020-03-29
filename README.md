@@ -36,38 +36,45 @@ The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "S
 ## Preamble
 
 HTML5 is inadequate to communicate web design between development teams. 
-It is difficult to maintain and lacks the ability to extend features to empower developers. The standard's purpose seems to exist to solely to organizes static information for presentation. Because it cannot generate dynamic markup by itself, engineers are forced to adapt a templating language that must be processed by a templating engine, which searches for its own syntax and then combines it with the data model.
+It is difficult to maintain and lacks the ability to extend features to empower developers. The standard's purpose seems to exist solely to organizes static information for presentation. Because it cannot generate dynamic markup by itself, engineers are forced to adapt a templating language that must be processed by a templating engine. This engine searches for its templating syntax and then combines it with the data model.
 
-Although, templating language exist inside the HTML5 document, they remain ignorant of the existing markup. Because the templating language is ignorant of the markup, it is not particularly well-suite for making improvement or ease of maintenance. 
+Although, the templating language must exist inside the HTML5 document, it remains ignorant of the existing markup. Because the templating language is ignorant of the markup, it is not particularly well-suited for making improvements to the markup or to ease in maintenance. 
 
-Why did we decide the assumption of this paradigm work best? The root cause appears to originate from a language, which in many ways HTML5 stems from, call SGML (Standard Generalized Markup Language). For in 1986 when this standard was accepted, it was based on two postulates (or assumptions):
+Why did we decide the assumptions in this paradigm work best? The root cause appears to originate from a language, which in many ways HTML5 stems from, call SGML (Standard Generalized Markup Language). For in 1986 when this standard was accepted, it was based on two postulates (or assumptions):
 + Declarative: Markup should describe a document's structure and other attributes rather than specify the processing that needs to be performed, because it is less likely to conflict with future developments.
 + Rigorous: In order to allow markup to take advantage of the techniques available for processing rigorously defined objects like programs and databases.
 
-The LHTML5 standard questions the first axiom and prefers to use the following:
-+ Declarative: Markup SHOULD describe a document's structure and other attributes. It does not perform processing, because of separation of concerns. It is however processed and may contain simple instructions for the processor. The processor decides if and how to interpret these instructions and whether to remove or replace them with rendered content.
+The LHTML5 standard questions the declarative axiom and replaces it as follows:
++ Declarative: Markup SHOULD describe a document's structure and other attributes. Due to separation of concerns it does not perform processing. It is however processed and may contain simple instructions for the processor. It is up to the processor to decide if and how to interpret these instructions, and whether or not to remove or replace them with rendered content.
 
 ## Purpose
-LHTML5 exists to help empower web development teams and encourage effective communication. When fully impletmented it allows complex features to be extended to non tech savvy indivudals.   
+LHTML5 exists to help empower web development teams and encourage effective communication. When fully implemented it allows complex features to be extended to non tech savvy individuals.   
 
 It can aid in one time markup conversions including CSS framework upgrades.
 
 ## Document Language
-The LHTML5 standard contains both the document language and processing standards. The document language defines the standard for a LHTML5 document (referred to as a "document"). Its syntax is similar to HTML5 but permits additional custom elements and attributes that are used to inform the processor. Unlike HTML5, which describes content for the web browser, LHMTL5 allows internal stakeholders to add instructions that generates dynamic pages. The processor defines how to use the document language to build dynamic HTML5. A document is past into a processor (also referred to as "program", "interpreter", "parser", etc.) that is responsible for building the HTML5. This standard focuses primarily on how configured elements and attributes serve as instructions to instantiate modules, perform coordinated logical functions, and replace themselves with rendered content. 
+The LHTML5 standard contains both the document language and processing standards. The document language defines the standard for an LHTML5 document (referred to as a "document"). Its syntax is similar to HTML5 but permits additional custom elements and attributes that are used to inform the processor. Unlike HTML5, which describes content for the web browser, LHMTL5 allows internal stakeholders to add instructions to generates dynamic pages. 
 
-The document MUST consist of tree elements that contain attributes. It is RECOMMENDED that it be well-formatted markup. It is RECOMMENDED that the document feature a root element (i.e. `<html>`). It is RECOMMEND that all tags that are opened be closed. 
+The document MUST consist of tree elements that contain attributes. It is RECOMMENDED that it be well-formatted markup. It is RECOMMENDED that the document feature a root element (i.e. `<html>`). It is RECOMMENDED that all tags that are opened be closed. 
 
-All of the markup contained within the document MUST adhere to either the static markup or the dynamic markup standards.
+All of the markup contained within the document MUST adhere to either the static markup or the dynamic markup standards below.
 
 ### Static Markup
-The document may contain static markup. Static markup is markup that the processor does not receive instructions from. Static markup MUST adhere to the [HTML5 spec](https://html.spec.whatwg.org/multipage/), which details how modern markup documents are delivered to the browser. Static markup is most often page specific markup that makes sense to manage within the document because it doesn't appear elsewhere. The paragraph text of a page is a good example of content that often makes sense to remain as static markup. 
+The document may contain static markup. Static markup is defined as markup that the processor does not receive instructions from. Static markup is often page specific content. A page's unique paragraph text is a often a good example of static markup. It makes sense to manage this content within the document because it doesn't appear elsewhere. 
+
+Static markup MUST adhere to the [HTML5 spec](https://html.spec.whatwg.org/multipage/), which details how modern markup documents are delivered to the browser. 
 
 ### Dynamic Markup
-Dynamic markup is the powerhouse of the document. Dynamic markup is markup that the processor MUST be capable of processing and rendering during runtime. This type of markup, which serve as instructions for the processor, is entirely optional. It include the presence of custom attributes, custom elements, and argument elements. The custom attributes and custom elements may or may not be defined in the HTML5 spec. Arguments elements are not within the HTML5 spec.
+Dynamic markup is the powerhouse of the document. It is markup that the processor MUST be capable of processing and rendering at runtime. This type of markup is entirely optional. 
 
-These elements and attributes act as the blueprints for dynamic content. The tags serve as placeholders for that dynamic content and once processed will be replaced with valid HTML5. The document may make use of any tags as dynamic markup. Even pre-exist HTML5 tags can be enhanced or transformed. For example, with LHTML5 for accessibility compliance, the alt attribute could be set to "decorator" when missing from `img` elements or srcset attributes could be automatically generated. 
+Dynamic markup includes the presence of custom attributes, custom elements, and argument elements. These custom attributes and custom elements may or may not be defined in the HTML5 spec. Argument elements are not within the HTML5 spec.
 
-The processor's builders generally replaces dynamic elements with rendered dynamic content that was not previously within the element.
+These elements and attributes act as the blueprints for dynamic content. They provide instructions for the processor and act as placeholders. A processor MAY replace dynamic elements with rendered dynamic content.
+
+The document MAY use any tags for dynamic markup. Even pre-existing HTML5 tags can be enhanced or transformed. For example:
+
++ the alt attribute could be set to "decorator" when missing from `img` elements for accessibility compliance; or
+ + srcset attributes could be automatically generated. 
  
 ### Custom Attributes
 The document language MAY use custom attributes not defined in the HTML5 spec. These elements SHOULD serve as instructions for the processor. 
@@ -175,7 +182,9 @@ The presence of custom elements and attributes in turn alters and shapes the pro
 The present of these elements allows internal stakeholders to communicate design. Elements and arguments can be passed from front end developers to backend end developers 
 
 ### Processor Standards
-LHTML5 is a modular language for emergent purposes. How a document is process is determined by both the builder, modules, and configuration.
+LHTML5 is a modular language for emergent purposes. The processor defines how to use the document language to build dynamic HTML5. A document is past into a processor (also referred to as "program", "interpreter", "parser", etc.) that is responsible for building the HTML5. This standard focuses primarily on how configured elements and attributes serve as instructions to instantiate modules, perform coordinated logical functions, and replace themselves with rendered content. 
+
+How a document is process is determined by both the builder, modules, and configuration. 
 
 #### Builders
 The same LHTML5 document may be built different ways depending on the specified builder. The builders may handle configurations differently. A processor may feature multiple builders, e.g. 
