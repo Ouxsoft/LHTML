@@ -34,15 +34,16 @@ A conforming implementation of LHTML5 must fulfill all normative requirements. C
 The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY ", and "OPTIONAL" will be used as defined in [RFC2119](https://www.ietf.org/rfc/rfc2119.txt). When used with the normative RFC2119 meanings, they will be all uppercase. Occurrences of these words in lowercase comprise normal prose usage, with no normative implications.
 
 ## Preamble
-HTML5 exist solely to organize static information for presentation. Its design hinders team collaboration, creates a difficult to maintain code base, and is difficult to improve.
+HTML5 exists solely to organize static information for presentation. Its design hinders team collaboration, creates a difficult to maintain code base, and is difficult to improve.
 
-HTML5 is inadequate to communicate web design between development teams. The syntax says to little with too many words. It lacks the ability to extend features to empower developers. It is machine centric. 
+HTML5 is inadequate to communicate web design between development teams. The syntax says too little with too many words. It lacks the ability to extend features to empower developers. It is machine centric.
 
-HTML5 is difficult to maintain because it is full of repetition. A major version update in a CSS framework can result in a massive website rewrite. It does not adhere to the DRY (don't repeat yourself) design principle.
+HTML5 is difficult to maintain because it is full repetition. A simple update in a CSS framework can result in a massive website rewrite. It does not adhere to the DRY (don't repeat yourself) design principle.
 
-HTML5 cannot generate dynamic markup by itself. Engineers are forced to adapt a templating language that must be processed by a templating engine. This engine searches for its templating syntax and then combines it with the data model. Although, the templating language must exist inside the HTML5 document, it remains ignorant of the existing markup. Because the templating language is ignorant of the markup, it is not particularly well-suited for making improvements to the markup or to ease in maintenance. 
+HTML5 cannot generate dynamic markup by itself. Engineers are forced to adapt a templating language that must be processed by a templating engine. This engine searches for its templating syntax and then combines it with the data model. Although the templating language must exist inside the HTML5 document, it remains ignorant of the existing markup. Because the templating language is ignorant of the markup, it is not particularly well-suited for making improvements to the markup or to ease in maintenance.
 
-Why did we decide the assumptions in this paradigm work best? The root cause appears to originate from SGML (Standard Generalized Markup Language), which in many ways HTML5 stems. In 1986, when this standard was accepted it was based on two postulates (or assumptions):
+Why did we decide the assumptions in this paradigm work best? The root cause appears to originate from SGML (Standard Generalized Markup Language), which in many ways stems from HTML5 stems. In 1986, when this standard was accepted it was based on two postulates (or assumptions):
+
 + Declarative: Markup should describe a document's structure and other attributes rather than specify the processing that needs to be performed, because it is less likely to conflict with future developments.
 + Rigorous: In order to allow markup to take advantage of the techniques available for processing rigorously defined objects like programs and databases.
 
