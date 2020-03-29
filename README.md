@@ -38,7 +38,7 @@ HTML5 exist solely to organize static information for presentation. Its design h
 
 HTML5 is inadequate to communicate web design between development teams. The syntax says to little with too many words. It lacks the ability to extend features to empower developers. It is machine centric. 
 
-HTML5 is difficult to maintain because it is full repetition. A simple update in a CSS framework can result in a massive website rewrite. It does not adhere to the DRY (don't repeat yourself) design principle.
+HTML5 is difficult to maintain because it is full of repetition. A major version update in a CSS framework can result in a massive website rewrite. It does not adhere to the DRY (don't repeat yourself) design principle.
 
 HTML5 cannot generate dynamic markup by itself. Engineers are forced to adapt a templating language that must be processed by a templating engine. This engine searches for its templating syntax and then combines it with the data model. Although, the templating language must exist inside the HTML5 document, it remains ignorant of the existing markup. Because the templating language is ignorant of the markup, it is not particularly well-suited for making improvements to the markup or to ease in maintenance. 
 
