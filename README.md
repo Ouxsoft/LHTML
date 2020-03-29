@@ -3,9 +3,9 @@
 March 2020 Edition
 
 ## Introduction
-Living HTML5 (LHTML5) turns markup into objects that collaborate to make even better markup. It aims to define an emergent markup language standard to communicate web design.
+Living HTML5 (LHTML5) turns markup into objects that collaborate to make even better markup. Anyone familiar with HTML5 should find LHTML5 a breeze. 
 
-Anyone familiar with HTML5 should find LHTML5 a breeze. Let's dive right in! 
+Let's dive right in! 
 
 ### Copyright notice
 Copyright (c) 2017-present Matthew Heroux
@@ -50,7 +50,7 @@ The LHTML5 standard questions the declarative axiom and replaces it as follows:
 + Declarative: Markup SHOULD describe a document's structure and other attributes. Due to separation of concerns it does not perform processing. It is however processed and may contain simple instructions for the processor. It is up to the processor to decide if and how to interpret these instructions, and whether or not to remove or replace them with rendered content.
 
 ## Purpose
-LHTML5 exists to make HTML5 more considerate of internal web stakeholders.
+LHTML5 exists to make HTML5 more considerate of internal web stakeholders. It aims to define an emergent markup language standard to communicate web design. 
 
 It helps empower web development teams and encourage effective communication. Web stakeholders can use an emergent markup language to describe a document that works for them now and into the future. When fully implemented it allows complex features to be extended to non tech savvy individuals. 
 
