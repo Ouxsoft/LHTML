@@ -34,15 +34,15 @@ A conforming implementation of LHTML5 must fulfill all normative requirements. C
 The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY ", and "OPTIONAL" will be used as defined in [RFC2119](https://www.ietf.org/rfc/rfc2119.txt). When used with the normative RFC2119 meanings, they will be all uppercase. Occurrences of these words in lowercase comprise normal prose usage, with no normative implications.
 
 ## Preamble
-HTML5 exist solely to organizes static information for presentation. Its design hinders team collaboration, creates a difficult to maintain code base, and difficult to improve.
+HTML5 exist solely to organize static information for presentation. Its design hinders team collaboration, creates a difficult to maintain code base, and is difficult to improve.
 
-HTML5 is inadequate to communicate web design between development teams. It says to little with too many words. It lacks the ability to extend features to empower developers. It is machine centric. 
+HTML5 is inadequate to communicate web design between development teams. The syntax says to little with too many words. It lacks the ability to extend features to empower developers. It is machine centric. 
 
-HTML5 is difficult to maintain. A simple update in a CSS framework can result in a massive website rewrite project because HTML5 is full repetition. It does not adhere to the DRY (don't repeat yourself) design principle.
+HTML5 is difficult to maintain because it is full repetition. A simple update in a CSS framework can result in a massive website rewrite. It does not adhere to the DRY (don't repeat yourself) design principle.
 
 HTML5 cannot generate dynamic markup by itself. Engineers are forced to adapt a templating language that must be processed by a templating engine. This engine searches for its templating syntax and then combines it with the data model. Although, the templating language must exist inside the HTML5 document, it remains ignorant of the existing markup. Because the templating language is ignorant of the markup, it is not particularly well-suited for making improvements to the markup or to ease in maintenance. 
 
-Why did we decide the assumptions in this paradigm work best? The root cause appears to originate from a language, which in many ways HTML5 stems from, call SGML (Standard Generalized Markup Language). For in 1986 when this standard was accepted, it was based on two postulates (or assumptions):
+Why did we decide the assumptions in this paradigm work best? The root cause appears to originate from SGML (Standard Generalized Markup Language), which in many ways HTML5 stems. In 1986, when this standard was accepted it was based on two postulates (or assumptions):
 + Declarative: Markup should describe a document's structure and other attributes rather than specify the processing that needs to be performed, because it is less likely to conflict with future developments.
 + Rigorous: In order to allow markup to take advantage of the techniques available for processing rigorously defined objects like programs and databases.
 
@@ -50,9 +50,11 @@ The LHTML5 standard questions the declarative axiom and replaces it as follows:
 + Declarative: Markup SHOULD describe a document's structure and other attributes. Due to separation of concerns it does not perform processing. It is however processed and may contain simple instructions for the processor. It is up to the processor to decide if and how to interpret these instructions, and whether or not to remove or replace them with rendered content.
 
 ## Purpose
-LHTML5 exists to help empower web development teams and encourage effective communication. When fully implemented it allows complex features to be extended to non tech savvy individuals.   
+LHTML5 exists to make HTML5 more considerate of internal web stakeholders.
 
-It can aid in one time markup conversions including CSS framework upgrades.
+It helps empower web development teams and encourage effective communication. Web stakeholders can use an emergent markup language to describe a document that works for them now and into the future. When fully implemented it allows complex features to be extended to non tech savvy individuals. 
+
+Developers can make their HTML5 templates easier to maintain. Complex elements can be maintained in a single location. Existing elements can be enhanced. CSS framework upgrades are no longer a massive undertaking as the code base is easier to maintain.
 
 ## Document Language
 The LHTML5 standard contains both the document language and processing standards. The document language defines the standard for an LHTML5 document (referred to as a "document"). Its syntax is similar to HTML5 but permits additional custom elements and attributes that are used to inform the processor. Unlike HTML5, which describes content for the web browser, LHMTL5 allows internal stakeholders to add instructions to generates dynamic pages. 
