@@ -56,9 +56,10 @@ The LHTML5 standard questions the declarative axiom and replaces it as follows:
 A standard that aims to allow for markup to be an emergent means of web communication is needed.
 
 ## Purpose
-LHTML5 aims to define an emergent markup language standard that can communicate web design. It aims to empower  internal web stakeholders and encourage effective communication. This standard is released separate from any implementation to allow the underlying technology to be swapped out.
+LHTML5 goal is to define an emergent markup language standard that can communicate web design. It aims to empower internal web stakeholders and encourage effective communication. This standard is released separate from any implementation to allow the underlying technology to be swapped out.
 
-Using LHTML5 allows web stakeholders to describe a document using an emergent markup language that works for them both now and into the future. Developers can make their HTML5 templates easier to maintain with LHTML5. Complex elements can be maintained in a single location. Existing elements can be enhanced.  And when fully implemented, LHTML5 allows complex features to be extended to non tech savvy individuals. CSS framework upgrades are no longer a massive undertaking as the code base is easier to maintain.
+Using LHTML5 enables web stakeholders to describe a document in an emergent way that works for them both now and into the future. Developers can make their HTML5 templates easier to maintain with LHTML5. Complex elements can be maintained in a single location. Existing elements can be enhanced. LHTML5 empowers non tech savvy individuals to use complex features through simple APIs.
+It makes it easier to perform CSS framework upgrades within code bases.
 
 ## Document Language
 The LHTML5 standard contains both the document language and processing standards. It is the goal of the document language to communicate web design between web stakeholders. The document language defines the standard for an LHTML5 document (referred to as a "document"). 
