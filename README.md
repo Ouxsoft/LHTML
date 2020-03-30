@@ -64,7 +64,7 @@ It makes it easier to perform CSS framework upgrades within code bases.
 ## Document Language
 The LHTML5 standard contains both the document language and processing standards. It is the goal of the document language to communicate web design between web stakeholders. The document language defines the standard for an LHTML5 document (referred to as a "document"). 
 
-The document language's syntax is similar to HTML5 but permits additional custom elements and attributes that are used to inform the processor. Unlike HTML5, which describes content for the web browser, LHMTL5 allows internal stakeholders to add instructions to generates dynamic pages. 
+The document language's syntax is similar to HTML5 but permits additional custom elements and attributes that are used to inform the processor. Unlike HTML5, which describes content for the web browser, LHTML5 allows internal stakeholders to add instructions to generates dynamic pages. 
 
 The document MUST consist of tree elements that contain attributes. It is RECOMMENDED that it be well-formatted markup. It is RECOMMENDED that the document feature a root element (i.e. `<html>`). It is RECOMMENDED that all tags that are opened be closed. 
 
