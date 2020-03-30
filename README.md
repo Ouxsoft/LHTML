@@ -40,7 +40,7 @@ Perhaps the largest obstacle is that HTML5 exists to organize static information
 
 The language is strict, only approved tags are permitted, which dampens the ability to extend features and empower developers.  HTML5 is inadequate for communicating web design between development teams that don’t talk using one of the predefined elements. The syntax says too little with too much. 
 
-Portions of product code bases using HTML5 are difficult to maintain because it is full of repetition. There is no consideration for the DRY (don't repeat yourself) design principle. A simple update in a CSS framework often results in a massive website rewrite.
+Portions of code bases using HTML5 are difficult to maintain because it is full of repetition. There is no consideration for the DRY (don't repeat yourself) design principle. A simple update in a CSS framework often results in a massive website rewrite.
 
 Engineers are forced to adapt a templating language because HTML5 cannot generate dynamic content by itself. This language is then processed by a templating engine, which searches for its templating syntax and then combines it with the data model. Even though the templating language must exist inside the HTML5 document, it remains ignorant of the preexisting markup. The templating language cannot effectively make improvements to the markup or to ease in maintenance due to this ignorance.
 
