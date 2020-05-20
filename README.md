@@ -5,7 +5,7 @@ March 2020 Edition
 ## Introduction
 Living HTML5 (LHTML5) turns markup into objects that collaborate to make even better markup. Anyone familiar with HTML5 should find LHTML5 a breeze. 
 
-Let's dive right in! 
+Let us dive right in! 
 
 ### Copyright notice
 Copyright (c) 2017-present Matthew Heroux
