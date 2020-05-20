@@ -5,7 +5,7 @@ March 2020 Edition
 ## Introduction
 Living HTML5 (LHTML5) turns markup into objects that collaborate to make even better markup. Anyone familiar with HTML5 should find LHTML5 a breeze. 
 
-Let us dive right in! 
+Let's dive right in! 
 
 ### Copyright notice
 Copyright (c) 2017-present Matthew Heroux
@@ -36,27 +36,27 @@ The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "S
 ## Preamble
 HTML5 is the latest evolution of the standard markup language for the World Wide Web. Unfortunately, HTML5 has inherited many flaws that are hindering modern web development teams. The weaknesses most concerning are discussed herein.
 
-Perhaps the largest obstacle is that HTML5 exists to organize static information for presentation. It is not designed to consider team collaboration, maintainability of a code base, or continuous improvement. It is a machine centric language -- written for a machine to send a message to a machine -- that some people know how to write.
+Perhaps the largest obstacle is that HTML5 exists to organize static information for presentation. It is not designed to consider team collaboration, maintainability of a code base, or continuous improvement. It is a machine-centric language -- written for a machine to send a message to a machine -- that some people know how to write.
 
-The language is strict, only approved tags are permitted, which dampens the ability to extend features and empower developers.  HTML5 is inadequate for communicating web design between development teams that don’t talk using one of the predefined elements. The syntax says too little with too much. 
+The language is strict and only approved tags are permitted, dampening the ability to extend features and empower developers.  HTML5 is inadequate for communicating web design between development teams that don’t talk using one of the predefined elements. The syntax says too little with too much input. 
 
 Portions of code bases using HTML5 are difficult to maintain because it is full of repetition. There is no consideration for the DRY (don't repeat yourself) design principle. A simple update in a CSS framework often results in a massive website rewrite.
 
-Engineers are forced to adapt a templating language because HTML5 cannot generate dynamic content by itself. This language is then processed by a templating engine, which searches for its templating syntax and then combines it with the data model. Even though the templating language must exist inside the HTML5 document, it remains ignorant of the preexisting markup. The templating language cannot effectively make improvements to the markup or to ease in maintenance due to this ignorance.
+Engineers are forced to adapt a templating language because HTML5 cannot generate dynamic content by itself. This language is then processed by a templating engine, which searches for its templating syntax and then combines it with the data model. Even though the templating language must exist inside the HTML5 document, it remains ignorant of the preexisting markup. The templating language cannot effectively make improvements to the markup or allow for ease in maintenance due to this ignorance.
 
-Why did we decide the assumptions in this paradigm work best? The root cause appears to originate from the ancestor of HTML5, known as SGML (Standard Generalized Markup Language). In 1986, when SGML was accepted, it was based on two postulates (or assumptions):
+Why did developers decide the assumptions in this paradigm work best? The root cause appears to originate from the ancestor of HTML5, known as SGML (Standard Generalized Markup Language). In 1986, when SGML was accepted, it was based on two postulates (or assumptions):
 
-+ Declarative: Markup should describe a document's structure and other attributes rather than specify the processing that needs to be performed, because it is less likely to conflict with future developments.
-+ Rigorous: In order to allow markup to take advantage of the techniques available for processing rigorously defined objects like programs and databases.
++ Declarative: Markup should describe document structure and other attributes rather than specify the processing that needs to be performed because it is less likely to conflict with future developments.
++ Rigorous: In order to allow markup to take advantage of the techniques available for processing, it requires rigorously defined objects like programs and databases.
 
 The LHTML5 standard questions the declarative axiom and replaces it as follows:
 
-+ Declarative: Markup SHOULD describe a document's structure and other attributes. Due to separation of concerns it does not perform processing. It is however processed and may contain simple instructions for the processor. It is up to the processor to decide if and how to interpret these instructions, and whether or not to remove or replace them with rendered content.
++ Declarative: Markup SHOULD describe document structure and other attributes. Due to separation of concerns, it does not perform processing. However, it is processed and may contain simple instructions for the processor. It is up to the processor to decide if and how to interpret these instructions, and whether or not to remove or replace them with rendered content.
 
 A standard that aims to allow for markup to be an emergent means of web communication is needed.
 
 ## Purpose
-LHTML5 goal is to define an emergent markup language standard that can communicate web design. It aims to empower internal web stakeholders and encourage effective communication. This standard is released separate from any implementation to allow the underlying technology to be swapped out.
+LHTML5 goal is to define an emergent markup language standard that can communicate web design. LHTML5 aims to empower internal web stakeholders and encourage effective communication. This standard is released separate from any implementation to allow the underlying technology to be swapped out.
 
 Using LHTML5 enables web stakeholders to describe a document in an emergent way that works for them both now and into the future. Developers can make their HTML5 templates easier to maintain with LHTML5. Complex elements can be maintained in a single location. Existing elements can be enhanced. LHTML5 empowers non tech savvy individuals to use complex features through simple APIs.
 It makes it easier to perform CSS framework upgrades within code bases.
@@ -64,7 +64,7 @@ It makes it easier to perform CSS framework upgrades within code bases.
 ## Document Language
 The LHTML5 standard contains both the document language and processing standards. It is the goal of the document language to communicate web design between web stakeholders. The document language defines the standard for an LHTML5 document (referred to as a "document"). 
 
-The document language's syntax is similar to HTML5 but permits additional custom elements and attributes that are used to inform the processor. Unlike HTML5, which describes content for the web browser, LHTML5 allows internal stakeholders to add instructions to generates dynamic pages. 
+The document language's syntax is similar to HTML5 but permits additional custom elements and attributes that are used to inform the processor. Unlike HTML5, which describes content for the web browser, LHTML5 allows internal stakeholders to add instructions to generate dynamic pages. 
 
 The document MUST consist of tree elements that contain attributes. It is RECOMMENDED that it be well-formatted markup. It is RECOMMENDED that the document feature a root element (i.e. `<html>`). It is RECOMMENDED that all tags that are opened be closed. 
 
@@ -80,7 +80,7 @@ Dynamic markup is the powerhouse of the document. It is markup that the processo
 
 Dynamic markup includes the presence of custom attributes, custom elements, and argument elements. These custom attributes and custom elements may or may not be defined in the HTML5 spec. Argument elements are not within the HTML5 spec.
 
-These elements and attributes act as the blueprints for dynamic content. They provide instructions for the processor and act as placeholders. A processor MAY replace dynamic elements with rendered dynamic content.
+These elements and attributes act as the blueprint for dynamic content. They provide instructions for the processor and act as placeholders. A processor MAY replace dynamic elements with rendered dynamic content.
 
 The document MAY use any tags for dynamic markup. Even pre-existing HTML5 tags can be enhanced or transformed. For example:
 
@@ -91,7 +91,7 @@ The document MAY use any tags for dynamic markup. Even pre-existing HTML5 tags c
 The document language MAY use custom attributes not defined in the HTML5 spec. These elements SHOULD serve as instructions for the processor. 
 
 #### Example 
-The following example show an invalid HTML5 attribute, "type", within the `<head>` element could be used to maintain the element's inner content. When this document is passed to an LHTML5 processor (along with the proper config and modules) the processor will instantiate the `<head>` element as a module, perform logic, remove the invalid attribute, and replace the inner HTML5 with valid render content. 
+The following example shows an invalid HTML5 attribute, "type", within the `<head>` element could be used to maintain the element's inner content. When this document is passed to an LHTML5 processor (along with the proper config and modules), the processor will instantiate the `<head>` element as a module, perform logic, remove the invalid attribute, and replace the inner HTML5 with valid render content. 
 
 ```html5
 <!doctype html>
@@ -107,7 +107,7 @@ The following example show an invalid HTML5 attribute, "type", within the `<head
 The document MAY use custom elements not defined in the HTML5 spec. LHTML5 design encourages the creation of custom elements over building a processing tree consisting of large nested logical elements, which are difficult to maintain. 
 
 #### Example
-The following shows an example of an unparsed document that would not be suitable to send to a site visitor's web browser unprocessed. This example contains two custom elements and makes use of four Modules. The Modules are instantiated using the `<html>`, `<block>`, `<news>` and `<footer>` elements and accomplish the following:
+The following is an example of an unparsed document that would not be suitable to send to a site visitor's web browser unprocessed. This example contains two custom elements and makes use of four Modules. The Modules are instantiated using the `<html>`, `<block>`, `<news>` and `<footer>` elements and accomplish the following:
  + The `<html>` element adds a completed `<head>` element when detected as missing. 
  + The `<block>` element is replaced by a fully built HTML5 navigation bar. 
  + The `<news>` element pulls up to 20 news stories from a database and display them with a `<div>` containing thumbnails and a headline. 
@@ -127,7 +127,7 @@ The following shows an example of an unparsed document that would not be suitabl
 Notice the `<h1>` element is part of the static page content; it remains uninitiated and unaltered.
 
 ### Arguments 
-During runtime the processor finds specified elements and instantiates them as objects (Modules). An element MAY feature arguments. These arguments are made available and accessible to Module as properties. The arguments MAY be defined using the element's attributes or child `<arg>` elements.
+During runtime the processor finds specified elements and instantiates them as objects (Modules). An element MAY feature arguments. These arguments are made available and accessible to the Module as properties. The arguments MAY be defined using the element's attributes or child `<arg>` elements.
 
 #### Arguments from Derived Attributes
 Arguments can be added as attributes within a dynamic element. The processor MUST pass all dynamic element's attributes as arguments. Storing and passing arguments as element attributes has its limits, as too much content can decrease readability. 
@@ -159,7 +159,7 @@ In the following example, `block` features three arguments, two of which are dec
 ```
 
 #### Argument Type Definition
-A processor implementation may be written in a language that makes use of strict types. For standardization, it is RECOMMENDED to define these data types within the `<arg>` element's "type" attribute. The various types values available are not defined within this standard because they may vary depending on the language. 
+A processor implementation may be written in a language that makes use of strict types. For standardization, it is RECOMMENDED to define these data types within the `<arg>` element's "type" attribute. The various type values available are not defined within this standard because they may vary depending on the language. 
  
 ##### Example
 
@@ -172,7 +172,7 @@ A processor implementation may be written in a language that makes use of strict
 ```
 
 ##### Passing Array Arguments
-An argument array can be made using multiple similarly arg elements with the same name. The following arg `type` contains an array with three values: 0 => pickles, 1 => ketchup, and 2 => mustard.
+An argument array can be made using multiple similar arg elements with the same name. The following arg `type` contains an array with three values: 0 => pickles, 1 => ketchup, and 2 => mustard.
 ```lhtml5
 <block name="Test">
     <arg name="type">pickles</arg>
@@ -182,7 +182,7 @@ An argument array can be made using multiple similarly arg elements with the sam
 ```
 
 ### Dialect
-The presence of custom elements and attributes in turn alters and shapes the project's dialect. That is why it is important to thoughtfully design these language changes. A decisive factor in success of a dialect (and thus the project's success) is its effectiveness to serve as a message to communicate between its stakeholders. A dialect's design is RECOMMENDED to carry a message that allows project stakeholders to effectively communicate. These stakeholders MAY include any of the following:
+The presence of custom elements and attributes in turn alters and shapes the project's dialect. That is why it is important to thoughtfully design these language changes. A decisive factor in success of a dialect (and thus the project's success) is its effectiveness to serve as a message to communicate between stakeholders. A dialect's design is RECOMMENDED to carry a message that allows project stakeholders to effectively communicate. These stakeholders MAY include any of the following:
 
 + Backend developer;
 + Template designers;
@@ -198,15 +198,15 @@ LHTML5 is a modular language for emergent purposes. The processor defines how to
 How a document is process is determined by both the builder, modules, and configuration. 
 
 #### Builders
-The same LHTML5 document may be built different ways depending on the specified builder. The builders may handle configurations differently. A processor may feature multiple builders, e.g. 
+The same LHTML5 document may be built in different ways depending on the specified builder. The builders may handle configurations differently. A processor may feature multiple builders, e.g. 
 + A WYSIWYG builder;
 + A search engine index builder;
 + A web browser builder.
 
-When an LHTML5 document is build for site visitor it SHOULD adhere to HTML5 standards without exception. 
+When an LHTML5 document is built for the site visitor it SHOULD adhere to HTML5 standards without exception. 
 
 #### Configuration
-The configuration contain the project's settings that are passed to the one of the processor's builder. The configurations are stored in a config, which is often a standalone file. 
+The configuration contains the project's settings that are passed to one of the processor's builders. The configurations are stored in a config, which is often a stand-alone file. 
 
 #### Example
 The following example demonstrates one potential YAML config.
@@ -260,7 +260,7 @@ The processor's config SHOULD be responsible for determining how to instantiate 
 | --- | ---| 
 | `name` | Machine readable identifier for the module. |
 | `xpath` | Find elements within the document using an XPath expression. |
-| `class_name` | Determines what class to instantiate the module as. |
+| `class_name` | Determines what class to instantiate the module. |
  
 ##### `xpath:`
 The xpath within the config is used to find elements to instantiate as Module. Only Modules defined in the processor config that are also found within the document should be instantiated.  
@@ -268,14 +268,14 @@ The xpath within the config is used to find elements to instantiate as Module. O
 | Type | Example | Description |
 | --- | --- | --- |
 | Native | `<head/>`  | A native module is instantiated using an preexisting HTML5 element. This is often the case when the element exist within the page but needs to be corrected or auto completed during parsing. | 
-| Custom | `<block/>` | A custom module is instantiated using a element not defined within the HTML5 spec. This is useful for namespacing custom elements that WYSIWYG users can drop into a page or when defining new content types. It's also a way of adding a term to communicate a feature to internal web stakeholders. |
+| Custom | `<block/>` | A custom module is instantiated using a element not defined within the HTML5 spec. This is useful for namespacing custom elements that WYSIWYG users can drop into a page or when defining new content types. It is also a way of adding a term to communicate a feature to internal web stakeholders. |
 
-The processor should ignore any elements not found using an xpath from the config. These elements SHOULD not be instantiated and SHOULD remain unaltered. 
+The processor should ignore any elements not found using an XPath from the config. These elements SHOULD not be instantiated and SHOULD remain unaltered. 
 
 ##### `class_name:`
 The same element can be instantiated different ways. During parsing, a module's `class_name` determines what class the module is instantiated as. The Module's `class_name` may use the element's attributes as variables to resolve the class.
 
-Depending on the configuration, if a the process cannot find a classes it MAY replace the elment with a HTML5 comment indicating an error has occurred. 
+Depending on the configuration, if the process cannot find classes it MAY replace the elment with a HTML5 comment indicating an error has occurred. 
 
 ###### Example
 The config determines the class that a module is instantiated as. A config with a different class_name declared will instantiate the same module differently. Take the following for example:
@@ -303,7 +303,7 @@ Modules are the worker bees of LHTML5. They are objects that complete logic to m
 + custom elements that are used to instantiate modules.
 
 ##### Nested Modules
-A dynamic element can be nested inside one another dynamic element. Therefore a module can be nested inside another module.
+A dynamic element can be nested inside another dynamic element. Therefore, a module can be nested inside another module.
  
 ###### Example
 The following shows an example of a `var` (short for variable) module nested inside a `block` module.
@@ -318,7 +318,7 @@ All Modules MUST be able to access their own private variables. In addition, all
 
 ##### Example
 The following example demonstrates module's ability to access their ancestor elements.
-* ModuleA can access no other modules public properties. 
+* ModuleA can access no other modules' public properties. 
 * ModuleB can access ModuleA's public properties.
 * ModuleC can access ModuleA's and ModuleB's public properties.
 * ModuleD can access ModuleA's public properties.
@@ -377,13 +377,13 @@ Reverse - Recursive reverse iterate.
 
 ## Reporting issues
 
-Please report issue and open new tickets:
+Please report issues and open new tickets:
 
 + [Report Issues](https://github.com/hxtree/lhtml5/issues)
 
 ## Contributing
 
-To contribute sign into your Github account, navigate to the [README.md](https://github.com/hxtree/lhtml5/blob/master/README.md), click the [edit button](https://github.com/hxtree/lhtml5/edit/master/README.md), and commit your changes.
+To contribute, sign into your Github account, navigate to the [README.md](https://github.com/hxtree/lhtml5/blob/master/README.md), click the [edit button](https://github.com/hxtree/lhtml5/edit/master/README.md), and commit your changes.
 
 ## Acknowledgments
 
