@@ -387,4 +387,4 @@ To contribute, sign into your Github account, navigate to the [README.md](https:
 
 ## Acknowledgments
 
-Thanks to Kseniya Gorbunova for their useful comments that have led to changes to this specification.
+Thanks to Kseniya Gorbunova and Kelly Heroux for their useful comments that have led to changes to this specification.
