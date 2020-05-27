@@ -6,7 +6,7 @@ Version 1.0.0
 ***L***iving ***HTML*** (LHTML) is a customizable markup-based templating engine standard. 
 
 In short, the standard defines the following process procedures: 
-1. The process receives a string that it turns into a Document Object Model (DOM)
+1. The process receives a string that it turns into a Document Object Model (DOM).
 2. Using a configuration it searches the DOM with a Xpath query and instantiates matches as specified classes. 
 3. Next, it iterates calls to these object using a list of methods. 
 4. Finally, it returns a resulting string containing the altered markup.
