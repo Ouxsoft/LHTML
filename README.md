@@ -5,7 +5,11 @@ Version 1.0.0
 ## Introduction
 ***L***iving ***HTML*** (LHTML) is a customizable markup-based templating engine standard. 
 
-In short, it turns a string into a Document Object Model that it searches using Xpath query. Nodes that match are instantiated as objects using a specified class. Next, it iterates through these objects calling specified methods from these objects. Afterwards, it returns the generated dynamic markup.
+In short, the standard defines the following process procedures: 
+1. The process receives a string that it turns into a Document Object Model (DOM)
+2. Using a configuration it searches the DOM with a Xpath query and instantiates matches as specified classes. 
+3. Next, it iterates calls to these object using a list of methods. 
+4. Finally, it returns a resulting string containing the altered markup.
 
 Anyone familiar with HTML5 should find LHTML a breeze. Let's dive right in! 
 
