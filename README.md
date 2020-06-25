@@ -1,6 +1,6 @@
 # LHTML Standard
 
-Version 1.0.0
+Version 1.1.0
 
 ## Introduction
 ***L***iving ***HTML*** (LHTML) is a customizable markup-based templating engine standard. 
@@ -85,7 +85,7 @@ The document MAY use any tags for dynamic markup. Even pre-existing HTML5 tags c
 The document language MAY use custom attributes not defined in the HTML5 spec. These elements SHOULD serve as instructions for the processor. 
 
 #### Example 
-The following example shows an invalid HTML5 attribute, "type", within the `<head>` element could be used to maintain the element's inner content. When this document is passed to an LHTML processor (along with the proper config and modules), the processor will instantiate the `<head>` element as a module, perform logic, remove the invalid attribute, and replace the inner HTML5 with valid render content. 
+The following example shows an invalid HTML5 attribute, "type", within the `<head>` element could be used to maintain the element's inner content. When this document is passed to an LHTML processor (along with the proper config and elements), the processor will instantiate the `<head>` element as a element, perform logic, remove the invalid attribute, and replace the inner HTML5 with valid render content. 
 
 ```lhtml
 <!doctype html>
@@ -101,7 +101,7 @@ The following example shows an invalid HTML5 attribute, "type", within the `<hea
 The document MAY use custom elements not defined in the HTML5 spec. LHTML design encourages the creation of custom elements over building a processing tree consisting of large nested logical elements, which are difficult to maintain. 
 
 #### Example
-The following is an example of an unparsed document that would not be suitable to send to a site visitor's web browser unprocessed. This example contains two custom elements and makes use of four Modules. The Modules are instantiated using the `<html>`, `<block>`, `<news>` and `<footer>` elements and accomplish the following:
+The following is an example of an unparsed document that would not be suitable to send to a site visitor's web browser unprocessed. This example contains two custom elements and makes use of four Elements. The Elements are instantiated using the `<html>`, `<block>`, `<news>` and `<footer>` elements and accomplish the following:
  + The `<html>` element adds a completed `<head>` element when detected as missing. 
  + The `<block>` element is replaced by a fully built HTML5 navigation bar. 
  + The `<news>` element pulls up to 20 news stories from a database and display them with a `<div>` containing thumbnails and a headline. 
@@ -121,7 +121,7 @@ The following is an example of an unparsed document that would not be suitable t
 Notice the `<h1>` element is part of the static page content; it remains uninitiated and unaltered.
 
 ### Arguments 
-During runtime the processor finds specified elements and instantiates them as objects (Modules). An element MAY feature arguments. These arguments are made available and accessible to the Module as properties. The arguments MAY be defined using the element's attributes or child `<arg>` elements.
+During runtime the processor finds specified elements and instantiates them as objects (Elements). An element MAY feature arguments. These arguments are made available and accessible to the Element as properties. The arguments MAY be defined using the element's attributes or child `<arg>` elements.
 
 #### Arguments from Derived Attributes
 Arguments can be added as attributes within a dynamic element. The processor MUST pass all dynamic element's attributes as arguments. Storing and passing arguments as element attributes has its limits, as too much content can decrease readability. 
@@ -187,9 +187,9 @@ The presence of custom elements and attributes in turn alters and shapes the pro
 The present of these elements allows internal stakeholders to communicate design. Elements and arguments can be passed from front end developers to backend end developers 
 
 ### Processor Standards
-LHTML is a modular language for emergent purposes. The processor defines how to use the document language to build dynamic HTML5. A document is past into a processor (also referred to as "program", "interpreter", "parser", etc.) that is responsible for building the HTML5. This standard focuses primarily on how configured elements and attributes serve as instructions to instantiate modules, perform coordinated logical functions, and replace themselves with rendered content. 
+LHTML is a modular language for emergent purposes. The processor defines how to use the document language to build dynamic HTML5. A document is past into a processor (also referred to as "program", "interpreter", "parser", etc.) that is responsible for building the HTML5. This standard focuses primarily on how configured elements and attributes serve as instructions to instantiate elements, perform coordinated logical functions, and replace themselves with rendered content. 
 
-How a document is process is determined by both the builder, modules, and configuration. 
+How a document is process is determined by both the builder, elements, and configuration. 
 
 #### Builders
 The same LHTML document may be built in different ways depending on the specified builder. The builders may handle configurations differently. A processor may feature multiple builders, e.g. 
@@ -205,32 +205,32 @@ The configuration contains the project's settings that are passed to one of the 
 #### Example
 The following example demonstrates one potential YAML config.
 ```yaml
-modules:
+elements:
   types:
     - name: 'Block'
-      class_name: 'LivingMarkup\Modules\Blocks\{name}'
+      class_name: 'LivingMarkup\Elements\Blocks\{name}'
       xpath: '//block'
       settings:
         - cache_duration: '1 hour'
         - search_index: false
     - name: 'Partial'
-      class_name: 'LivingMarkup\Modules\Partials\{name}'
+      class_name: 'LivingMarkup\Elements\Partials\{name}'
       xpath: '//partial'
     - name: 'Image'
       xpath: '//img'
-      class_name: 'LivingMarkup\Modules\Image'
+      class_name: 'LivingMarkup\Elements\Image'
     - name: 'Hyperlink'
       xpath: '//a'
-      class_name: 'LivingMarkup\Modules\Hyperlink'
+      class_name: 'LivingMarkup\Elements\Hyperlink'
     - name: 'Variable'
       xpath: '//var'
-      class_name: 'LivingMarkup\Modules\Variable'
+      class_name: 'LivingMarkup\Elements\Variable'
     - name: 'If Statement'
       xpath: '//if'
-      class_name: 'LivingMarkup\Modules\IfStatement'
+      class_name: 'LivingMarkup\Elements\IfStatement'
     - name: 'Redact'
       xpath: '//redact'
-      class_name: 'LivingMarkup\Modules\Redact'
+      class_name: 'LivingMarkup\Elements\Redact'
   methods:
     - name: 'beforeLoad'
       descirption: 'Execute before object data load'
@@ -247,45 +247,45 @@ modules:
       descirption: 'Execute after object rendered'
 ```
 
-##### Module Types
-The processor's config SHOULD be responsible for determining how to instantiate Modules. A valid config MUST be capable of providing instruction to remove all elements and attributes not permitted by the HTML5 spec. This config MUST describe each module using the following fields:
+##### Element Types
+The processor's config SHOULD be responsible for determining how to instantiate Elements. A valid config MUST be capable of providing instruction to remove all elements and attributes not permitted by the HTML5 spec. This config MUST describe each element using the following fields:
 
 | Field | Summary |
 | --- | ---| 
-| `name` | Machine readable identifier for the module. |
+| `name` | Machine readable identifier for the element. |
 | `xpath` | Find elements within the document using an XPath expression. |
-| `class_name` | Determines what class to instantiate the module. |
+| `class_name` | Determines what class to instantiate the element. |
  
 ##### `xpath:`
-The xpath within the config is used to find elements to instantiate as Module. Only Modules defined in the processor config that are also found within the document should be instantiated.  
+The xpath within the config is used to find elements to instantiate as Element. Only Elements defined in the processor config that are also found within the document should be instantiated.  
 
 | Type | Example | Description |
 | --- | --- | --- |
-| Native | `<head/>`  | A native module is instantiated using an preexisting HTML5 element. This is often the case when the element exist within the page but needs to be corrected or auto completed during parsing. | 
-| Custom | `<block/>` | A custom module is instantiated using a element not defined within the HTML5 spec. This is useful for namespacing custom elements that WYSIWYG users can drop into a page or when defining new content types. It is also a way of adding a term to communicate a feature to internal web stakeholders. |
+| Native | `<head/>`  | A native element is instantiated using an preexisting HTML5 element. This is often the case when the element exist within the page but needs to be corrected or auto completed during parsing. | 
+| Custom | `<block/>` | A custom element is instantiated using a element not defined within the HTML5 spec. This is useful for namespacing custom elements that WYSIWYG users can drop into a page or when defining new content types. It is also a way of adding a term to communicate a feature to internal web stakeholders. |
 
 The processor should ignore any elements not found using an XPath from the config. These elements SHOULD not be instantiated and SHOULD remain unaltered. 
 
 ##### `class_name:`
-The same element can be instantiated different ways. During parsing, a module's `class_name` determines what class the module is instantiated as. The Module's `class_name` may use the element's attributes as variables to resolve the class.
+The same element can be instantiated different ways. During parsing, a element's `class_name` determines what class the element is instantiated as. The Element's `class_name` may use the element's attributes as variables to resolve the class.
 
 Depending on the configuration, if the process cannot find classes it MAY replace the elment with a HTML5 comment indicating an error has occurred. 
 
 ###### Example
-The config determines the class that a module is instantiated as. A config with a different class_name declared will instantiate the same module differently. Take the following for example:
+The config determines the class that a element is instantiated as. A config with a different class_name declared will instantiate the same element differently. Take the following for example:
 
 ```lhtml
 <block name="Test"/>
 ```
 
-| class_name | Module Class Instantiated | 
+| class_name | Element Class Instantiated | 
 | --- | --- |
-| "Modules/Block/{name}" | `Modules/Block/Test` |
-| "Modules/Block" | `Modules/Block` | 
+| "Elements/Block/{name}" | `Elements/Block/Test` |
+| "Elements/Block" | `Elements/Block` | 
 | "TestElement" | `TestElement` |
 
-#### Modules
-Modules are the worker bees of LHTML. They are objects that complete logic to modify the document. They receive instruction from the documents args and the configuration. Potential uses of LHTML modules include, but are not limited to:
+#### Elements
+Elements are the worker bees of LHTML. They are objects that complete logic to modify the document. They receive instruction from the documents args and the configuration. Potential uses of LHTML elements include, but are not limited to:
 
 + reduce architectural debt and clutter of redundant elements present across multiple pages;
 + extend backend features to frontend WYSIWYG users;
@@ -294,48 +294,48 @@ Modules are the worker bees of LHTML. They are objects that complete logic to mo
 + separate complex page logic from the template;
 + embed simple conditional logic;
 + enable the use of dynamic content (such as variables); and
-+ custom elements that are used to instantiate modules.
++ custom elements that are used to instantiate elements.
 
-##### Nested Modules
-A dynamic element can be nested inside another dynamic element. Therefore, a module can be nested inside another module.
+##### Nested Elements
+A dynamic element can be nested inside another dynamic element. Therefore, a element can be nested inside another element.
  
 ###### Example
-The following shows an example of a `var` (short for variable) module nested inside a `partial` module.
+The following shows an example of a `var` (short for variable) element nested inside a `partial` element.
 ```lhtml
 <partial name="UserProfile">
     <var name="fist_name"/>
 </partial>
 ```
 
-#### Module Ancestor Properties
-All Modules MUST be able to access their own private variables. In addition, all Modules can access their ancestors element's public variables. 
+#### Element Ancestor Properties
+All Elements MUST be able to access their own private variables. In addition, all Elements can access their ancestors element's public variables. 
 
 ##### Example
-The following example demonstrates module's ability to access their ancestor elements.
-* ModuleA can access no other modules' public properties. 
-* ModuleB can access ModuleA's public properties.
-* ModuleC can access ModuleA's and ModuleB's public properties.
-* ModuleD can access ModuleA's public properties.
-* ModuleE can access ModuleA's and ModuleD's public properties.
+The following example demonstrates element's ability to access their ancestor elements.
+* ElementA can access no other elements' public properties. 
+* ElementB can access ElementA's public properties.
+* ElementC can access ElementA's and ElementB's public properties.
+* ElementD can access ElementA's public properties.
+* ElementE can access ElementA's and ElementD's public properties.
 
 ```HTML
- <block name="ModuleA">
- 	<block name="ModuleB">
- 		<block name="ModuleC"/>
+ <block name="ElementA">
+ 	<block name="ElementB">
+ 		<block name="ElementC"/>
  	</block>
- 	<block name="ModuleD">
- 		<block name="ModuleE">
+ 	<block name="ElementD">
+ 		<block name="ElementE">
  	</block>
  </block>
 ```
 
-##### Module Methods
-The config defines method calls to be orchestrated against all the modules instantiated. These methods MAY differ project to project. It stands to reason that one of the last methods called will be to render the Module's output and its content will replace the original element entirely. 
+##### Element Methods
+The config defines method calls to be orchestrated against all the elements instantiated. These methods MAY differ project to project. It stands to reason that one of the last methods called will be to render the Element's output and its content will replace the original element entirely. 
 
 Method calls to instantiated objects MAY occur in either forward or reverse order depending on the orchestration needs. 
 
 ###### Example
-The following examples demonstrate the two different orders, forward and reverse, in which Module methods can be called. The processor SHOULD make render calls (e.g. onRender) in reverse. In this example, the order of module method calls are indicated by process_id attribute.
+The following examples demonstrate the two different orders, forward and reverse, in which Element methods can be called. The processor SHOULD make render calls (e.g. onRender) in reverse. In this example, the order of element method calls are indicated by process_id attribute.
 
 Forward - Recursive iterate forward. 
 ```lhtml
