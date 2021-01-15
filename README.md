@@ -1,7 +1,7 @@
 # LHTML Standard
 A markup abstraction layer.
 
-Version 1.1.0
+Version 1.1.2
 
 ## Introduction
 ***L***iving ***HTML*** (LHTML) is a customizable markup-based templating engine standard. 
