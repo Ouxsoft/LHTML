@@ -1,4 +1,5 @@
 # LHTML Standard
+A markup abstraction layer.
 
 Version 1.1.0
 
@@ -203,48 +204,125 @@ When an LHTML document is built for the site visitor it SHOULD adhere to HTML5 s
 The configuration contains the project's settings that are passed to one of the processor's builders. The configurations are stored in a config, which is often a stand-alone file. 
 
 #### Example
-The following example demonstrates one potential YAML config.
-```yaml
-elements:
-  types:
-    - name: 'Block'
-      class_name: 'LivingMarkup\Elements\Blocks\{name}'
-      xpath: '//block'
-      settings:
-        - cache_duration: '1 hour'
-        - search_index: false
-    - name: 'Partial'
-      class_name: 'LivingMarkup\Elements\Partials\{name}'
-      xpath: '//partial'
-    - name: 'Image'
-      xpath: '//img'
-      class_name: 'LivingMarkup\Elements\Image'
-    - name: 'Hyperlink'
-      xpath: '//a'
-      class_name: 'LivingMarkup\Elements\Hyperlink'
-    - name: 'Variable'
-      xpath: '//var'
-      class_name: 'LivingMarkup\Elements\Variable'
-    - name: 'If Statement'
-      xpath: '//if'
-      class_name: 'LivingMarkup\Elements\IfStatement'
-    - name: 'Redact'
-      xpath: '//redact'
-      class_name: 'LivingMarkup\Elements\Redact'
-  methods:
-    - name: 'beforeLoad'
-      descirption: 'Execute before object data load'
-    - name: 'onLoad'
-      descirption: 'Execute during object data load'
-    - name: 'afterLoad'
-      description: 'Execute after object data loaded'
-    - name: 'beforeRender'
-      description: 'Execute before object render'
-    - name: 'onRender'
-      description: 'Execute during object render'
-      execute: 'RETURN_CALL'
-    - name: 'afterRender'
-      descirption: 'Execute after object rendered'
+The following example demonstrates one potential JSON config.
+```json
+{
+  "version": 1,
+  "elements": {
+    "types": [
+      {
+        "name": "Code",
+        "xpath": "//code[not(ancestor::*[@process='false'])]",
+        "class_name": "LHTML\\Element\\Core\\Code"
+      },
+      {
+        "name": "If Statement",
+        "xpath": "//if[not(ancestor::*[@process='false'])]",
+        "class_name": "LHTML\\Element\\Core\\IfStatement"
+      },
+      {
+        "name": "Variable",
+        "xpath": "//var[not(ancestor::*[@process='false'])]",
+        "class_name": "LHTML\\Element\\Core\\Variable"
+      },
+      {
+        "name": "Hyperlink",
+        "xpath": "//a[not(ancestor::*[@process='false'])]",
+        "class_name": "LHTML\\Element\\Core\\Hyperlink"
+      },
+      {
+        "name": "Redact",
+        "xpath": "//redact[not(ancestor::*[@process='false'])]",
+        "class_name": "LHTML\\Element\\Core\\Redact"
+      },
+      {
+        "name": "Block[not(ancestor::*[@process='false'])]",
+        "xpath": "//block[not(ancestor::*[@process='false'])]",
+        "class_name": "LHTML\\Element\\Custom\\Blocks\\{name}"
+      },
+      {
+        "name": "Partial",
+        "xpath": "//partial[not(ancestor::*[@process='false'])]",
+        "class_name": "LHTML\\Element\\Custom\\Partial\\{name}"
+      },
+      {
+        "name": "Widget",
+        "xpath": "//widget[not(ancestor::*[@process='false'])]",
+        "class_name": "LHTML\\Element\\Custom\\Widgets\\{name}",
+        "settings": [
+          {
+            "cache_duration": "1 hour"
+          },
+          {
+            "search_index": false
+          }
+        ]
+      },
+      {
+        "name": "Nav",
+        "xpath": "//nav[not(ancestor::*[@process='false']|ancestor::main)]",
+        "class_name": "LHTML\\Element\\Custom\\Nav\\{name}"
+      },
+      {
+        "name": "Head",
+        "xpath": "//head[not(ancestor::*[@process='false'])]",
+        "class_name": "LHTML\\Element\\Custom\\Head\\{name}"
+      },
+      {
+        "name": "Header",
+        "xpath": "//header[not(ancestor::*[@process='false'])]",
+        "class_name": "LHTML\\Element\\Custom\\Header\\{name}"
+      },
+      {
+        "name": "Main",
+        "xpath": "//main[not(ancestor::*[@process='false'])]",
+        "class_name": "LHTML\\Element\\Custom\\Main\\{name}"
+      },
+      {
+        "name": "Alert",
+        "xpath": "//alert[not(ancestor::*[@process='false'])]",
+        "class_name": "LHTML\\Element\\Custom\\Partial\\Alert"
+      },
+      {
+        "name": "Footer",
+        "xpath": "//footer[not(ancestor::*[@process='false'])]",
+        "class_name": "LHTML\\Element\\Custom\\Footer\\{name}"
+      },
+      {
+        "name": "Example",
+        "xpath": "//example[not(ancestor::*[@process='false'])]",
+        "class_name": "LHTML\\Element\\Custom\\Example\\{name}"
+      }
+    ],
+    "methods": [
+      {
+        "name": "beforeLoad",
+        "descirption": "Execute before object data load"
+      },
+      {
+        "name": "onLoad",
+        "descirption": "Execute during object data load"
+      },
+      {
+        "name": "afterLoad",
+        "description": "Execute after object data loaded"
+      },
+      {
+        "name": "beforeRender",
+        "description": "Execute before object render"
+      },
+      {
+        "name": "onRender",
+        "description": "Execute during object render",
+        "execute": "RETURN_CALL"
+      },
+      {
+        "name": "afterRender",
+        "descirption": "Execute after object rendered"
+      }
+    ]
+  }
+}
 ```
 
 ##### Element Types
