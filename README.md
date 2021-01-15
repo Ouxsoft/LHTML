@@ -451,7 +451,7 @@ Reverse - Recursive reverse iterate.
 
 Please report issues and open new tickets:
 
-+ [Report Issues](https://github.com/hxtree/lhtml/issues)
++ [Report Issues](https://github.com/ouxsoft/lhtml/issues)
 
 ## Contributing
 
