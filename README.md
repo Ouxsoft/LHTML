@@ -1,7 +1,7 @@
 # LHTML Standard
 A markup abstraction layer.
 
-Version 1.1.2
+Version 2.0.0
 
 ## Introduction
 ***L***iving ***HTML*** (LHTML) is a customizable markup-based templating engine standard. 
@@ -205,123 +205,42 @@ The configuration contains the project's settings that are passed to one of the 
 
 #### Example
 The following example demonstrates one potential JSON config.
-```json
+```json   
 {
-  "version": 1,
-  "elements": {
-    "types": [
-      {
-        "name": "Code",
-        "xpath": "//code[not(ancestor::*[@process='false'])]",
-        "class_name": "LHTML\\Element\\Core\\Code"
-      },
-      {
-        "name": "If Statement",
-        "xpath": "//if[not(ancestor::*[@process='false'])]",
-        "class_name": "LHTML\\Element\\Core\\IfStatement"
-      },
-      {
-        "name": "Variable",
-        "xpath": "//var[not(ancestor::*[@process='false'])]",
-        "class_name": "LHTML\\Element\\Core\\Variable"
-      },
-      {
-        "name": "Hyperlink",
-        "xpath": "//a[not(ancestor::*[@process='false'])]",
-        "class_name": "LHTML\\Element\\Core\\Hyperlink"
-      },
-      {
-        "name": "Redact",
-        "xpath": "//redact[not(ancestor::*[@process='false'])]",
-        "class_name": "LHTML\\Element\\Core\\Redact"
-      },
-      {
-        "name": "Block[not(ancestor::*[@process='false'])]",
-        "xpath": "//block[not(ancestor::*[@process='false'])]",
-        "class_name": "LHTML\\Element\\Custom\\Blocks\\{name}"
-      },
-      {
-        "name": "Partial",
-        "xpath": "//partial[not(ancestor::*[@process='false'])]",
-        "class_name": "LHTML\\Element\\Custom\\Partial\\{name}"
-      },
-      {
-        "name": "Widget",
-        "xpath": "//widget[not(ancestor::*[@process='false'])]",
-        "class_name": "LHTML\\Element\\Custom\\Widgets\\{name}",
-        "settings": [
-          {
-            "cache_duration": "1 hour"
-          },
-          {
-            "search_index": false
-          }
-        ]
-      },
-      {
-        "name": "Nav",
-        "xpath": "//nav[not(ancestor::*[@process='false']|ancestor::main)]",
-        "class_name": "LHTML\\Element\\Custom\\Nav\\{name}"
-      },
-      {
-        "name": "Head",
-        "xpath": "//head[not(ancestor::*[@process='false'])]",
-        "class_name": "LHTML\\Element\\Custom\\Head\\{name}"
-      },
-      {
-        "name": "Header",
-        "xpath": "//header[not(ancestor::*[@process='false'])]",
-        "class_name": "LHTML\\Element\\Custom\\Header\\{name}"
-      },
-      {
-        "name": "Main",
-        "xpath": "//main[not(ancestor::*[@process='false'])]",
-        "class_name": "LHTML\\Element\\Custom\\Main\\{name}"
-      },
-      {
-        "name": "Alert",
-        "xpath": "//alert[not(ancestor::*[@process='false'])]",
-        "class_name": "LHTML\\Element\\Custom\\Partial\\Alert"
-      },
-      {
-        "name": "Footer",
-        "xpath": "//footer[not(ancestor::*[@process='false'])]",
-        "class_name": "LHTML\\Element\\Custom\\Footer\\{name}"
-      },
-      {
-        "name": "Example",
-        "xpath": "//example[not(ancestor::*[@process='false'])]",
-        "class_name": "LHTML\\Element\\Custom\\Example\\{name}"
-      }
-    ],
-    "methods": [
-      {
-        "name": "beforeLoad",
-        "descirption": "Execute before object data load"
-      },
-      {
-        "name": "onLoad",
-        "descirption": "Execute during object data load"
-      },
-      {
-        "name": "afterLoad",
-        "description": "Execute after object data loaded"
-      },
-      {
-        "name": "beforeRender",
-        "description": "Execute before object render"
-      },
-      {
-        "name": "onRender",
-        "description": "Execute during object render",
-        "execute": "RETURN_CALL"
-      },
-      {
-        "name": "afterRender",
-        "descirption": "Execute after object rendered"
-      }
-    ]
-  }
+  "version": 3,
+  "elements": [
+    {
+      "xpath": "//bitwise",
+      "class_name": "LivingMarkup\\Test\\Bitwise"
+    }
+  ],
+  "routines": [
+    {
+      "method": "beforeLoad",
+      "description": "Execute before object data is loaded"
+    },
+    {
+      "method": "onLoad",
+      "description": "Execute when object data is loading"
+    },
+    {
+      "method": "afterLoad",
+      "description": "Execute after object data is loaded"
+    },
+    {
+      "method": "beforeRender",
+      "description": "Execute before object is rendered"
+    },
+    {
+      "method": "onRender",
+      "description": "Execute while object is rendering",
+      "execute": "RETURN_CALL"
+    },
+    {
+      "method": "afterRender",
+      "description": "Execute after object is rendered"
+    }
+  ]
 }
 ```
 
@@ -407,8 +326,8 @@ The following example demonstrates element's ability to access their ancestor el
  </block>
 ```
 
-##### Element Methods
-The config defines method calls to be orchestrated against all the elements instantiated. These methods MAY differ project to project. It stands to reason that one of the last methods called will be to render the Element's output and its content will replace the original element entirely. 
+##### Routines
+The config defines routines which are method calls to be orchestrated against all the elements instantiated. These methods MAY differ project to project. It stands to reason that one of the last methods called will be to render the Element's output and its content will replace the original element entirely. 
 
 Method calls to instantiated objects MAY occur in either forward or reverse order depending on the orchestration needs. 
 
