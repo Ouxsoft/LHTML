@@ -114,7 +114,7 @@ The following is an example of an unparsed document that would not be suitable t
     <h1>News &amp; Events</h1>
     <news>
         <arg name="limit">20</arg>
-        <arg name"style">thumnail</arg>
+        <arg name="style">thumbnail</arg>
     </news>
     <footer/>
 </html>
